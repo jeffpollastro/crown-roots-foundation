@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Contact — Crown Roots Foundation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/light-logo.svg" alt="">
+            <span>Crown Roots Foundation</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="opportunity-gap.html">Opportunity Gap</a></li>
+            <li><a href="college-database.html">College Database</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <h1>Contact Us</h1>
+    <p>Partner with Crown Roots Foundation or learn more about supporting Pocono Mountain youth athletics.</p>
+</div>
+
+<div class="section">
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+
+        <div>
+            <h2>Get In Touch</h2>
+            <form class="contact-form" action="mailto:info@crownroots.org" method="post" enctype="text/plain">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="interest">I'm interested in...</label>
+                <select id="interest" name="interest">
+                    <option value="partnership">Partnership / Sponsorship</option>
+                    <option value="donation">Making a Donation</option>
+                    <option value="board">Board Service</option>
+                    <option value="volunteer">Volunteering</option>
+                    <option value="info">General Information</option>
+                </select>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+
+        <div>
+            <h2>Partner With Us</h2>
+            <p>Crown Roots Foundation welcomes partnerships from individuals, businesses, and organizations who share our commitment to youth development and education equity in the Pocono Mountain region.</p>
+
+            <div class="card" style="margin-top:24px;">
+                <h3>Sponsor a Season</h3>
+                <p>Fund a full season of Crown Hub programming &mdash; leagues, training, and academic support for Mountain athletes who otherwise have no access.</p>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+                <h3>Facility Partnership</h3>
+                <p>Schools, churches, and recreation centers: partner with us to host Crown Hub programming in your space.</p>
+            </div>
+
+            <div class="card" style="margin-top:16px;">
+                <h3>Corporate Sponsorship</h3>
+                <p>Align your brand with a mission that directly addresses the opportunity gap in one of Pennsylvania's most underserved athletic regions.</p>
+            </div>
+
+            <h2 style="margin-top:32px;">Support Our Mission</h2>
+            <p>Every contribution helps build the infrastructure that Pocono Mountain youth athletics has never had.</p>
+            <div class="definition-box">
+                <strong>Crown Roots Foundation</strong> is in the process of establishing 501(c)(3) nonprofit status. Donation details and tax-deductibility information will be available upon approval.
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Crown Roots Foundation. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+</script>
+
+<style>
+@media (max-width: 768px) {
+    .section > div[style*="grid-template-columns"] {
+        display: block !important;
+    }
+    .section > div[style*="grid-template-columns"] > div + div {
+        margin-top: 40px;
+    }
+}
+</style>
+
+</body>
+</html>
