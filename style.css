@@ -54,6 +54,7 @@ img, svg { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .nav-brand {
@@ -76,9 +77,21 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .nav-links {
-  display: flex;
-  gap: 4px;
+  display: none;
   list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--dark-brown);
+  flex-direction: column;
+  padding: 8px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 99;
+}
+
+.nav-links.open {
+  display: flex;
 }
 
 .nav-links a {
@@ -97,7 +110,7 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .nav-toggle {
-  display: none;
+  display: block;
   background: none;
   border: none;
   color: var(--gold);
@@ -463,25 +476,7 @@ img, svg { max-width: 100%; height: auto; }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav-toggle { display: block; }
-
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: var(--dark-brown);
-    flex-direction: column;
-    padding: 8px 0;
-    border-top: 1px solid rgba(255,255,255,0.1);
-  }
-
-  .nav-links.open { display: flex; }
-
   .nav-links a { padding: 12px 20px; }
-
-  .site-nav .nav-inner { position: relative; }
 
   .hero { padding: 40px 20px; }
   .hero h1 { font-size: 28px; }
