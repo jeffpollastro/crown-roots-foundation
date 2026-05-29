@@ -4,9 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>College Database Vision — Crown Roots Foundation</title>
+    <title>College Database — Crown Roots Foundation</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="assets/Crown Roots Foundation Favicon.png">
+    <style>
+        /* ── Bracket Selector ── */
+        .bracket-selector {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 20px 0 24px;
+            flex-wrap: wrap;
+        }
+        .bracket-selector label {
+            font-weight: 600;
+            color: var(--dark-brown);
+            font-size: 15px;
+        }
+        .bracket-selector select {
+            border: 2px solid var(--gold);
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 15px;
+            background: #fff;
+            color: var(--dark-brown);
+            cursor: pointer;
+            font-family: inherit;
+        }
+        .bracket-selector select:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(212,153,13,0.2);
+        }
+
+        /* ── Crown Roots Pick Badge ── */
+        .cr-badge {
+            background: var(--gold);
+            color: var(--dark-brown);
+            font-family: 'Righteous', sans-serif;
+            font-size: 10px;
+            letter-spacing: 0.03em;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-left: 7px;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+
+        /* ── Hidden Value Table ── */
+        #hvTableWrap { margin-top: 4px; }
+        #hvTable { width: 100%; border-collapse: collapse; font-size: 14px; }
+        #hvTable thead tr { background: var(--dark-brown); color: var(--gold); }
+        #hvTable thead th {
+            padding: 10px 12px;
+            text-align: left;
+            font-family: 'Righteous', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        #hvTable thead th:first-child { width: 36px; text-align: center; }
+        #hvTable tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+        #hvTable tbody tr:hover { background: #fffbf0; }
+        #hvTable tbody td { padding: 11px 12px; vertical-align: middle; }
+        #hvTable tbody td:first-child { text-align: center; }
+        .school-name { font-weight: 600; color: var(--dark-brown); }
+        .school-location { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        /* ── ESU Baseline Row ── */
+        tr.baseline-row td { background: #f5f5f5; color: #888; font-style: italic; }
+        tr.baseline-row .school-name { color: #888; font-weight: 500; }
+        tr.baseline-row:hover td { background: #f0f0f0; }
+        tr.baseline-row td:first-child input { display: none; }
+
+        /* ── Gap Cell ── */
+        .gap-cell { font-weight: 700; font-size: 15px; white-space: nowrap; }
+        .gap-cell .severity { margin-right: 5px; }
+        .gap-label-under { color: #16a34a; }
+        .gap-label-medium { color: #b45309; }
+        .gap-label-high { color: #c2410c; }
+        .gap-label-critical { color: #b91c1c; }
+
+        /* ── Source Link ── */
+        .source-link { font-size: 12px; color: var(--gold); text-decoration: none; white-space: nowrap; }
+        .source-link:hover { text-decoration: underline; }
+
+        /* ── Compare Checkboxes ── */
+        .compare-check {
+            width: 17px;
+            height: 17px;
+            accent-color: var(--gold);
+            cursor: pointer;
+        }
+        .compare-check:disabled { opacity: 0.35; cursor: not-allowed; }
+
+        /* ── Sticky Compare Bar ── */
+        .compare-bar {
+            display: none;
+            position: sticky;
+            bottom: 0;
+            background: var(--dark-brown);
+            color: #fff;
+            padding: 12px 24px;
+            gap: 10px;
+            align-items: center;
+            z-index: 100;
+            flex-wrap: wrap;
+            box-shadow: 0 -4px 16px rgba(0,0,0,0.18);
+        }
+        .compare-bar.active { display: flex; }
+        .compare-bar-label { font-size: 13px; color: #ccc; margin-right: 4px; }
+        .compare-chip {
+            background: var(--gold);
+            color: var(--dark-brown);
+            border-radius: 20px;
+            padding: 4px 10px 4px 12px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .chip-remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            color: var(--dark-brown);
+            padding: 0;
+            line-height: 1;
+            font-weight: 700;
+        }
+        .compare-bar-spacer { flex: 1; }
+        .btn-compare-now {
+            background: var(--gold);
+            color: var(--dark-brown);
+            border: none;
+            border-radius: 6px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-family: 'Righteous', sans-serif;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn-compare-now:hover { opacity: 0.88; }
+        .compare-hint { font-size: 12px; color: #aaa; margin-left: 4px; }
+
+        /* ── Compare Panel ── */
+        #comparePanel { display: none; margin-top: 28px; }
+        #comparePanel.visible { display: block; }
+        #comparePanel h3 {
+            font-family: 'Righteous', sans-serif;
+            color: var(--dark-brown);
+            font-size: 18px;
+            margin-bottom: 14px;
+        }
+        #compareTable { width: 100%; border-collapse: collapse; font-size: 14px; }
+        #compareTable th {
+            background: var(--dark-brown);
+            color: var(--gold);
+            padding: 10px 14px;
+            text-align: left;
+            font-family: 'Righteous', sans-serif;
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+        #compareTable th:first-child { width: 130px; }
+        #compareTable td { padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+        #compareTable tr:last-child td { border-bottom: none; }
+        #compareTable .baseline-col { background: #f5f5f5; color: #888; font-style: italic; }
+        #compareTable .row-label { font-weight: 600; color: var(--dark-brown); font-size: 13px; }
+        #compareTable .gap-big { font-size: 17px; font-weight: 700; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .bracket-selector { flex-direction: column; align-items: flex-start; }
+            #hvTable thead th:nth-child(4),
+            #hvTable tbody td:nth-child(4) { display: none; } /* hide endowment on mobile */
+            .compare-bar { padding: 10px 14px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -30,7 +210,7 @@
 </nav>
 
 <div class="hero">
-    <h1>The National College Database</h1>
+    <h1>The College Database</h1>
     <p>Academics is the path. Athletic scholarships are a lottery &mdash; academic aid is obtainable. This tool shows Pocono families the truth about what college actually costs.</p>
 </div>
 
@@ -56,7 +236,7 @@
         </div>
     </div>
     <p>Too many kids on the mountain hear "I'm going to the League" and build their entire future around an athletic scholarship that statistically won't come. Meanwhile, academic aid &mdash; grants, merit scholarships, need-based packages &mdash; is exponentially more obtainable and goes unclaimed every year. The problem isn't a lack of opportunity. It's a lack of information.</p>
-    <p>College websites advertise generous aid packages. What they don't make clear is <strong>The Gap</strong> &mdash; the amount families must actually find through savings, work, or debt after all grant aid is applied. For Pocono families earning $30,000-$48,000, this gap can mean the difference between graduating and dropping out. Our database makes The Gap impossible to miss.</p>
+    <p>College websites advertise generous aid packages. What they don't make clear is <strong>The Gap</strong> &mdash; the amount families must actually find through savings, work, or debt after all grant aid is applied. For Pocono families earning $30,000&ndash;$48,000, this gap can mean the difference between graduating and dropping out. Our database makes The Gap impossible to miss.</p>
 </div>
 
 <!-- How It Works -->
@@ -66,7 +246,7 @@
         <div class="card-grid">
             <div class="card">
                 <h3>1. Enter Your Income</h3>
-                <p>Select your family income bracket. The database instantly filters schools and calculates your estimated gap at each institution.</p>
+                <p>Select your family income bracket. The database instantly re-sorts schools and recalculates The Gap at each institution.</p>
             </div>
             <div class="card">
                 <h3>2. See The Gap First</h3>
@@ -74,11 +254,11 @@
             </div>
             <div class="card">
                 <h3>3. Compare Side-by-Side</h3>
-                <p>Compare up to 3 schools with Pocono-specific travel costs included. The "close and cheap" option is often the most expensive.</p>
+                <p>Check up to 3 schools and compare them side-by-side against the ESU baseline &mdash; what your family would pay, and what you'd save.</p>
             </div>
             <div class="card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
-                <h3>4. Pocono Travel Costs</h3>
-                <p>Every school includes realistic travel estimates from the Poconos &mdash; replacing generic transportation budgets with actual flight and drive costs.</p>
+                <h3>4. Crown Roots Picks</h3>
+                <p>Schools where The Gap falls below $12,000/year for your bracket earn the <strong>★ Crown Roots Pick</strong> designation &mdash; verified high-endowment schools worth a serious look.</p>
             </div>
         </div>
     </div>
@@ -87,11 +267,11 @@
 <!-- Gap Severity -->
 <div class="section">
     <h2>The Gap Warning System</h2>
-    <p>Every school in the database gets a clear severity rating based on what your family would need to find beyond grant aid:</p>
+    <p>Every school gets a clear severity rating based on what your family would need to find beyond grant aid:</p>
     <div style="margin: 20px 0;">
-        <p><span class="severity severity-low"></span> <strong>Low Gap ($0 - $2,500/year)</strong> &mdash; This school is likely affordable for your family.</p>
-        <p><span class="severity severity-medium"></span> <strong>Medium Gap ($2,501 - $7,500/year)</strong> &mdash; Budget carefully. You'll need to cover the gap beyond aid.</p>
-        <p><span class="severity severity-high"></span> <strong>High Gap ($7,501 - $15,000/year)</strong> &mdash; Significant out-of-pocket cost. Over 4 years, you'd need to find $30,000-$60,000 beyond aid.</p>
+        <p><span class="severity severity-low"></span> <strong>Low Gap ($0 &ndash; $2,500/year)</strong> &mdash; This school is likely affordable for your family.</p>
+        <p><span class="severity severity-medium"></span> <strong>Medium Gap ($2,501 &ndash; $7,500/year)</strong> &mdash; Budget carefully. You'll need to cover the gap beyond aid.</p>
+        <p><span class="severity severity-high"></span> <strong>High Gap ($7,501 &ndash; $15,000/year)</strong> &mdash; Significant out-of-pocket cost. Over 4 years, you'd need to find $30,000&ndash;$60,000 beyond aid.</p>
         <p><span class="severity severity-critical"></span> <strong>Critical Gap ($15,001+/year)</strong> &mdash; Danger zone. Many students in this situation don't finish their degree.</p>
     </div>
     <div class="definition-box">
@@ -99,10 +279,10 @@
     </div>
 </div>
 
-<!-- Sample Comparison -->
+<!-- What the Data Reveals -->
 <div class="section">
     <h2>What the Data Reveals</h2>
-    <p>For a family earning $30,000-$48,000, the numbers can be counterintuitive:</p>
+    <p>For a family earning $30,000&ndash;$48,000, the numbers can be counterintuitive:</p>
     <div class="table-scroll">
     <table class="data-table">
         <thead>
@@ -135,6 +315,53 @@
     </div>
 </div>
 
+<!-- ═══════════════════════════════════════════════════════
+     HIDDEN VALUE SCHOOLS — Live Database Section
+════════════════════════════════════════════════════════ -->
+<div class="section" id="hiddenValueSection">
+    <h2>Hidden Value Schools</h2>
+    <p>High-endowment schools within 4&ndash;5 hours of the Poconos where The Gap beats East Stroudsburg University &mdash; schools Pocono families rarely consider. The <strong>★ Crown Roots Pick</strong> badge marks schools where The Gap falls below $12,000/year for your selected bracket.</p>
+
+    <div class="bracket-selector">
+        <label for="bracketSelect">Your family income bracket:</label>
+        <select id="bracketSelect">
+            <option value="under30">Under $30,000</option>
+            <option value="b30to48" selected>$30,000 &ndash; $48,000</option>
+            <option value="b48to75">$48,000 &ndash; $75,000</option>
+            <option value="b75to110">$75,000 &ndash; $110,000</option>
+            <option value="over110">Over $110,000</option>
+        </select>
+    </div>
+
+    <div class="table-scroll" id="hvTableWrap">
+        <!-- Rendered by JS -->
+    </div>
+
+    <!-- Compare Panel -->
+    <div id="comparePanel">
+        <h3>Side-by-Side Comparison</h3>
+        <div class="table-scroll">
+            <table id="compareTable"><!-- Rendered by JS --></table>
+        </div>
+        <p style="font-size:12px; color:var(--text-muted); margin-top:10px;">
+            Gap figures from <a href="https://www.tuitiontracker.org" target="_blank" rel="noopener" style="color:var(--gold);">Tuition Tracker</a> (IPEDS data). All figures represent net price after grants and scholarships — loans excluded.
+        </p>
+    </div>
+
+    <div class="definition-box" style="margin-top: 24px;">
+        <strong>Data source:</strong> Net price figures from Tuition Tracker (IPEDS Finance Survey, FY2023&ndash;24). ESU figures are the baseline for Pocono families — every other school on this list costs less for the selected income bracket. Acceptance rates are approximate; verify at each institution.
+    </div>
+</div>
+
+<!-- Sticky Compare Bar (outside section for full-width sticky) -->
+<div class="compare-bar" id="compareBar">
+    <span class="compare-bar-label">Comparing:</span>
+    <div id="chipContainer" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+    <div class="compare-bar-spacer"></div>
+    <span class="compare-hint" id="compareHint"></span>
+    <button class="btn-compare-now" id="btnCompareNow">Compare Selected ▸</button>
+</div>
+
 <!-- Alumni Tracking & Dual Portal -->
 <div class="section">
     <h2>Alumni Pathways: Proof That Academics Works</h2>
@@ -160,7 +387,7 @@
         <div class="card">
             <span class="phase-badge phase-mvp">MVP</span>
             <h3>Phase 1: Core Database</h3>
-            <p>Search by income bracket and gap threshold. Basic school profiles with The Gap prominent. Side-by-side comparison for up to 3 schools. Travel cost calculator for Pocono families. Gap severity warnings.</p>
+            <p>Hidden Value schools with income bracket selector, gap severity ratings, and side-by-side compare tool. ESU baseline visible on every view.</p>
         </div>
         <div class="card">
             <span class="phase-badge phase-2">Phase 2</span>
@@ -186,8 +413,8 @@
                 <p>Federal Integrated Postsecondary Education Data System &mdash; tuition, fees, enrollment, financial aid, and graduation rates.</p>
             </div>
             <div class="card">
-                <h3>College Scorecard</h3>
-                <p>Department of Education data on earnings outcomes, Pell recipient graduation rates, and loan default rates.</p>
+                <h3>Tuition Tracker</h3>
+                <p>hechinger.tuitiontracker.org &mdash; net price by income bracket sourced directly from IPEDS. Used for all Gap figures in this database.</p>
             </div>
             <div class="card">
                 <h3>NACUBO</h3>
@@ -195,15 +422,15 @@
             </div>
             <div class="card">
                 <h3>Institutional Research</h3>
-                <p>Manual verification of no-loan policies, travel allowances, and need-meeting commitments from each institution.</p>
+                <p>Manual verification of no-loan policies, acceptance rates, and need-meeting commitments from each institution.</p>
             </div>
         </div>
     </div>
 </div>
 
 <div class="cta-banner">
-    <h2>Help Us Build This Tool</h2>
-    <p>The college database is central to Crown Hub's Access to Information pillar &mdash; giving Pocono families the truth about what college costs and how academics can change a family's trajectory. Your support helps make it a reality.</p>
+    <h2>Help Us Expand This Database</h2>
+    <p>The college database is central to Crown Hub's Access to Information pillar &mdash; giving Pocono families the truth about what college costs and how academics can change a family's trajectory. Your support helps us add more schools and keep data current.</p>
     <div class="cta-buttons">
         <a href="contact.html" class="btn btn-primary">Support This Project</a>
         <a href="about.html" class="btn btn-secondary">Learn About Crown Roots</a>
@@ -215,9 +442,387 @@
 </footer>
 
 <script>
-document.querySelector('.nav-toggle').addEventListener('click', function() {
+// ─────────────────────────────────────────────
+// School Data (source: Tuition Tracker / IPEDS FY2023-24)
+// ─────────────────────────────────────────────
+const schools = [
+    {
+        id: 'colgate',
+        name: 'Colgate University',
+        location: 'Hamilton, NY',
+        driveMins: 240,
+        driveLabel: '~4 hrs',
+        endowment: '$1.1B',
+        acceptRate: '19%',
+        netPrice: { under30: 6832, b30to48: 3006, b48to75: 15286, b75to110: 24507, over110: 54146 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=190099'
+    },
+    {
+        id: 'swarthmore',
+        name: 'Swarthmore College',
+        location: 'Swarthmore, PA',
+        driveMins: 150,
+        driveLabel: '~2.5 hrs',
+        endowment: '$2.5B',
+        acceptRate: '9%',
+        netPrice: { under30: 8644, b30to48: 5565, b48to75: 12864, b75to110: 25228, over110: 53443 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=216287'
+    },
+    {
+        id: 'lafayette',
+        name: 'Lafayette College',
+        location: 'Easton, PA',
+        driveMins: 45,
+        driveLabel: '~45 min',
+        endowment: '$1.1B',
+        acceptRate: '39%',
+        netPrice: { under30: 14197, b30to48: 8312, b48to75: 12148, b75to110: 14046, over110: 58735 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=213385'
+    },
+    {
+        id: 'haverford',
+        name: 'Haverford College',
+        location: 'Haverford, PA',
+        driveMins: 150,
+        driveLabel: '~2.5 hrs',
+        endowment: '$875M',
+        acceptRate: '15%',
+        netPrice: { under30: 8331, b30to48: 10386, b48to75: 13283, b75to110: 20102, over110: 50879 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=212911'
+    },
+    {
+        id: 'hamilton',
+        name: 'Hamilton College',
+        location: 'Clinton, NY',
+        driveMins: 240,
+        driveLabel: '~4 hrs',
+        endowment: '$1.1B',
+        acceptRate: '20%',
+        netPrice: { under30: 8977, b30to48: 10611, b48to75: 12147, b75to110: 23051, over110: 52453 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=191515'
+    },
+    {
+        id: 'rochester',
+        name: 'Univ. of Rochester',
+        location: 'Rochester, NY',
+        driveMins: 270,
+        driveLabel: '~4.5 hrs',
+        endowment: '$3B',
+        acceptRate: '28%',
+        netPrice: { under30: 10741, b30to48: 13523, b48to75: 23403, b75to110: 30946, over110: 51942 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=195030'
+    },
+    {
+        id: 'bucknell',
+        name: 'Bucknell University',
+        location: 'Lewisburg, PA',
+        driveMins: 120,
+        driveLabel: '~2 hrs',
+        endowment: '$900M',
+        acceptRate: '35%',
+        netPrice: { under30: 23316, b30to48: 13643, b48to75: 26316, b75to110: 31301, over110: 61929 },
+        tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=211291'
+    }
+];
+
+// ESU baseline — always pinned at bottom, never checked
+const esu = {
+    id: 'esu',
+    name: 'East Stroudsburg Univ.',
+    location: 'E. Stroudsburg, PA',
+    driveMins: 0,
+    driveLabel: '0 min',
+    endowment: '$23.8M',
+    acceptRate: '90%+',
+    netPrice: { under30: 16796, b30to48: 15863, b48to75: 19001, b75to110: 23104, over110: 25024 },
+    tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=212115'
+};
+
+// ─────────────────────────────────────────────
+// State
+// ─────────────────────────────────────────────
+const CR_THRESHOLD = 12000;
+let selectedBracket = 'b30to48';
+let selectedIds = new Set();
+
+// ─────────────────────────────────────────────
+// Helpers
+// ─────────────────────────────────────────────
+function fmt(n) {
+    return '$' + n.toLocaleString('en-US');
+}
+
+function severityClass(n) {
+    if (n <= 2500)  return 'severity-low';
+    if (n <= 7500)  return 'severity-medium';
+    if (n <= 15000) return 'severity-high';
+    return 'severity-critical';
+}
+
+function gapColorClass(n) {
+    if (n <= 2500)  return 'gap-label-under';
+    if (n <= 7500)  return 'gap-label-medium';
+    if (n <= 15000) return 'gap-label-high';
+    return 'gap-label-critical';
+}
+
+function bracketLabel(b) {
+    const map = {
+        under30: 'Under $30K',
+        b30to48: '$30K–$48K',
+        b48to75: '$48K–$75K',
+        b75to110: '$75K–$110K',
+        over110: 'Over $110K'
+    };
+    return map[b] || b;
+}
+
+// ─────────────────────────────────────────────
+// Render Table
+// ─────────────────────────────────────────────
+function renderTable(bracket) {
+    const sorted = [...schools].sort((a, b) => a.netPrice[bracket] - b.netPrice[bracket]);
+
+    let html = '<table id="hvTable"><thead><tr>'
+        + '<th></th>'
+        + '<th>School</th>'
+        + '<th>Location</th>'
+        + '<th>Endowment</th>'
+        + '<th>Acceptance</th>'
+        + '<th>Drive</th>'
+        + '<th>Gap / yr</th>'
+        + '<th>Source</th>'
+        + '</tr></thead><tbody>';
+
+    sorted.forEach(s => {
+        const gap = s.netPrice[bracket];
+        const isCR = gap < CR_THRESHOLD;
+        const checked = selectedIds.has(s.id) ? 'checked' : '';
+        const atMax = selectedIds.size >= 3 && !selectedIds.has(s.id);
+        const disabled = atMax ? 'disabled' : '';
+
+        html += `<tr>
+            <td><input type="checkbox" class="compare-check" data-id="${s.id}" ${checked} ${disabled}></td>
+            <td>
+                <div class="school-name">${s.name}${isCR ? '<span class="cr-badge">★ Crown Roots Pick</span>' : ''}</div>
+            </td>
+            <td style="font-size:13px;">${s.location}</td>
+            <td style="font-size:13px;">${s.endowment}</td>
+            <td style="font-size:13px;">${s.acceptRate}</td>
+            <td style="font-size:13px;">${s.driveLabel}</td>
+            <td class="gap-cell">
+                <span class="severity ${severityClass(gap)}"></span>
+                <span class="${gapColorClass(gap)}">${fmt(gap)}</span>
+            </td>
+            <td><a href="${s.tuitionTracker}" target="_blank" rel="noopener" class="source-link">Tuition Tracker ↗</a></td>
+        </tr>`;
+    });
+
+    // ESU baseline row — always last
+    const esuGap = esu.netPrice[bracket];
+    html += `<tr class="baseline-row">
+        <td></td>
+        <td><div class="school-name">${esu.name} <em style="font-size:11px;">(baseline)</em></div></td>
+        <td style="font-size:13px;">${esu.location}</td>
+        <td style="font-size:13px;">${esu.endowment}</td>
+        <td style="font-size:13px;">${esu.acceptRate}</td>
+        <td style="font-size:13px;">${esu.driveLabel}</td>
+        <td class="gap-cell">
+            <span class="severity ${severityClass(esuGap)}"></span>
+            <span class="${gapColorClass(esuGap)}">${fmt(esuGap)}</span>
+        </td>
+        <td><a href="${esu.tuitionTracker}" target="_blank" rel="noopener" class="source-link">Tuition Tracker ↗</a></td>
+    </tr>`;
+
+    html += '</tbody></table>';
+
+    document.getElementById('hvTableWrap').innerHTML = html;
+
+    // Re-attach checkbox listeners
+    document.querySelectorAll('.compare-check').forEach(cb => {
+        cb.addEventListener('change', onCheckboxChange);
+    });
+}
+
+// ─────────────────────────────────────────────
+// Checkbox Change
+// ─────────────────────────────────────────────
+function onCheckboxChange(e) {
+    const id = e.target.dataset.id;
+    if (e.target.checked) {
+        if (selectedIds.size >= 3) {
+            e.target.checked = false;
+            return;
+        }
+        selectedIds.add(id);
+    } else {
+        selectedIds.delete(id);
+    }
+    updateCompareBar();
+    renderComparePanel();
+    // Re-render to update disabled states
+    renderTable(selectedBracket);
+}
+
+// ─────────────────────────────────────────────
+// Compare Bar
+// ─────────────────────────────────────────────
+function updateCompareBar() {
+    const bar = document.getElementById('compareBar');
+    const chipContainer = document.getElementById('chipContainer');
+    const hint = document.getElementById('compareHint');
+
+    if (selectedIds.size === 0) {
+        bar.classList.remove('active');
+        return;
+    }
+    bar.classList.add('active');
+
+    const remaining = 3 - selectedIds.size;
+    hint.textContent = remaining > 0 ? `(add up to ${remaining} more)` : '';
+
+    chipContainer.innerHTML = '';
+    selectedIds.forEach(id => {
+        const s = schools.find(x => x.id === id);
+        if (!s) return;
+        const chip = document.createElement('div');
+        chip.className = 'compare-chip';
+        chip.innerHTML = `${s.name} <button class="chip-remove" data-id="${id}" aria-label="Remove ${s.name}">×</button>`;
+        chipContainer.appendChild(chip);
+    });
+
+    chipContainer.querySelectorAll('.chip-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+            selectedIds.delete(btn.dataset.id);
+            updateCompareBar();
+            renderComparePanel();
+            renderTable(selectedBracket);
+        });
+    });
+}
+
+// ─────────────────────────────────────────────
+// Compare Panel
+// ─────────────────────────────────────────────
+function renderComparePanel() {
+    const panel = document.getElementById('comparePanel');
+    const table = document.getElementById('compareTable');
+
+    if (selectedIds.size < 2) {
+        panel.classList.remove('visible');
+        return;
+    }
+    panel.classList.add('visible');
+
+    const selected = [...selectedIds].map(id => schools.find(s => s.id === id)).filter(Boolean);
+    const bracket = selectedBracket;
+    const bl = bracketLabel(bracket);
+
+    // Build header row
+    let thead = '<thead><tr><th>Field</th>';
+    selected.forEach(s => { thead += `<th>${s.name}</th>`; });
+    thead += `<th class="baseline-col">ESU (baseline)</th></tr></thead>`;
+
+    // Build rows
+    const rows = [
+        {
+            label: `Gap — ${bl}`,
+            fn: s => {
+                const g = s.netPrice[bracket];
+                return `<span class="gap-big ${gapColorClass(g)}">${fmt(g)}</span> <span class="severity ${severityClass(g)}"></span>`;
+            },
+            esuFn: () => {
+                const g = esu.netPrice[bracket];
+                return `<span class="gap-big ${gapColorClass(g)}">${fmt(g)}</span> <span class="severity ${severityClass(g)}"></span>`;
+            }
+        },
+        {
+            label: '4-Year Gap Total',
+            fn: s => {
+                const total = s.netPrice[bracket] * 4;
+                return `<strong>${fmt(total)}</strong>`;
+            },
+            esuFn: () => {
+                const total = esu.netPrice[bracket] * 4;
+                return `<strong>${fmt(total)}</strong>`;
+            }
+        },
+        {
+            label: 'Savings vs. ESU / yr',
+            fn: s => {
+                const diff = esu.netPrice[bracket] - s.netPrice[bracket];
+                if (diff > 0) return `<span style="color:#16a34a; font-weight:700;">−${fmt(diff)}</span>`;
+                if (diff < 0) return `<span style="color:#dc2626; font-weight:700;">+${fmt(Math.abs(diff))}</span>`;
+                return '—';
+            },
+            esuFn: () => '— (baseline)'
+        },
+        {
+            label: 'Endowment',
+            fn: s => s.endowment,
+            esuFn: () => esu.endowment
+        },
+        {
+            label: 'Drive from Poconos',
+            fn: s => s.driveLabel,
+            esuFn: () => esu.driveLabel
+        },
+        {
+            label: 'Acceptance Rate',
+            fn: s => s.acceptRate,
+            esuFn: () => esu.acceptRate
+        },
+        {
+            label: 'Source',
+            fn: s => `<a href="${s.tuitionTracker}" target="_blank" rel="noopener" class="source-link">Tuition Tracker ↗</a>`,
+            esuFn: () => `<a href="${esu.tuitionTracker}" target="_blank" rel="noopener" class="source-link">Tuition Tracker ↗</a>`
+        }
+    ];
+
+    let tbody = '<tbody>';
+    rows.forEach(row => {
+        tbody += `<tr><td class="row-label">${row.label}</td>`;
+        selected.forEach(s => { tbody += `<td>${row.fn(s)}</td>`; });
+        tbody += `<td class="baseline-col">${row.esuFn()}</td></tr>`;
+    });
+    tbody += '</tbody>';
+
+    table.innerHTML = thead + tbody;
+}
+
+// ─────────────────────────────────────────────
+// Compare Now Button — scroll to panel
+// ─────────────────────────────────────────────
+document.getElementById('btnCompareNow').addEventListener('click', () => {
+    const panel = document.getElementById('comparePanel');
+    if (selectedIds.size < 2) {
+        alert('Select at least 2 schools to compare.');
+        return;
+    }
+    renderComparePanel();
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+// ─────────────────────────────────────────────
+// Bracket Selector
+// ─────────────────────────────────────────────
+document.getElementById('bracketSelect').addEventListener('change', function () {
+    selectedBracket = this.value;
+    renderTable(selectedBracket);
+    if (selectedIds.size >= 2) renderComparePanel();
+});
+
+// ─────────────────────────────────────────────
+// Nav Toggle
+// ─────────────────────────────────────────────
+document.querySelector('.nav-toggle').addEventListener('click', function () {
     document.querySelector('.nav-links').classList.toggle('open');
 });
+
+// ─────────────────────────────────────────────
+// Init
+// ─────────────────────────────────────────────
+renderTable(selectedBracket);
 </script>
 
 </body>
