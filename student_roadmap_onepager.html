@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your 4-Year Playbook — Crown Roots Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #D4990D;
+      --dark-brown: #302210;
+      --accent-gold: #c9a227;
+      --section-bg: #f5f0e1;
+      --border: #ddd;
+      --text: #1a1a1a;
+      --text-light: #444;
+      --text-muted: #777;
+      --white: #fff;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fafafa;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 24px auto;
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ─── HEADER ─────────────────────────────── */
+    .header {
+      background: var(--dark-brown);
+      padding: 20px 28px 16px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .header-logo {
+      height: 60px;
+      width: auto;
+      flex-shrink: 0;
+    }
+
+    .header-text {
+      flex: 1;
+    }
+
+    .header-text h1 {
+      font-family: 'Righteous', system-ui, sans-serif;
+      font-size: 26px;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+
+    .header-text .tagline {
+      font-size: 12px;
+      color: #ccc;
+      line-height: 1.4;
+    }
+
+    .header-text .org {
+      font-size: 11px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 4px;
+    }
+
+    /* ─── BODY ───────────────────────────────── */
+    .body {
+      padding: 20px 28px 16px;
+    }
+
+    /* ─── GRID ───────────────────────────────── */
+    .grid-section {
+      margin-bottom: 18px;
+    }
+
+    .section-label {
+      font-family: 'Righteous', system-ui, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .roadmap-grid {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .roadmap-grid th {
+      background: var(--dark-brown);
+      color: var(--white);
+      font-family: 'Righteous', system-ui, sans-serif;
+      font-size: 13px;
+      padding: 10px 12px;
+      text-align: left;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .roadmap-grid th.grade-col {
+      text-align: center;
+    }
+
+    .roadmap-grid th .grade-num {
+      display: block;
+      font-size: 18px;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .roadmap-grid th .grade-theme {
+      display: block;
+      font-size: 9px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-top: 2px;
+    }
+
+    .roadmap-grid td {
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--text-light);
+      vertical-align: top;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      line-height: 1.45;
+    }
+
+    .roadmap-grid tr:last-child td { border-bottom: none; }
+    .roadmap-grid td:last-child, .roadmap-grid th:last-child { border-right: none; }
+
+    .roadmap-grid tr:nth-child(even) td { background: #fafafa; }
+    .roadmap-grid tr:nth-child(odd) td { background: var(--white); }
+
+    .row-label {
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--dark-brown);
+      white-space: nowrap;
+      background: var(--section-bg) !important;
+    }
+
+    .highlight {
+      background: #fffbf0 !important;
+    }
+
+    /* ─── TWO-COLUMN LOWER SECTION ───────────── */
+    .lower {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 0;
+    }
+
+    .panel {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .panel-header {
+      background: var(--dark-brown);
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-header h2 {
+      font-family: 'Righteous', system-ui, sans-serif;
+      font-size: 13px;
+      color: var(--gold);
+      line-height: 1.2;
+    }
+
+    .panel-body {
+      padding: 12px 14px;
+      background: var(--white);
+    }
+
+    /* Pathways */
+    .pathway-list {
+      list-style: none;
+    }
+
+    .pathway-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .pathway-list li:last-child { border-bottom: none; }
+
+    .pathway-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+
+    .dot-primary { background: var(--gold); }
+    .dot-alt { background: #aaa; }
+
+    .pathway-name {
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    .pathway-desc {
+      color: var(--text-muted);
+      display: block;
+      font-size: 11px;
+    }
+
+    /* Services */
+    .service-list {
+      list-style: none;
+    }
+
+    .service-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .service-list li:last-child { border-bottom: none; }
+
+    .service-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--section-bg);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .service-title {
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    .service-desc {
+      color: var(--text-muted);
+      display: block;
+      font-size: 11px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    .footer {
+      background: var(--dark-brown);
+      padding: 10px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-quote {
+      font-size: 11px;
+      color: #aaa;
+      font-style: italic;
+    }
+
+    .footer-web {
+      font-size: 11px;
+      color: var(--gold);
+      font-family: 'Righteous', system-ui, sans-serif;
+    }
+
+    /* ─── PRINT ──────────────────────────────── */
+    @media print {
+      @page {
+        size: letter;
+        margin: 0.45in;
+      }
+
+      body {
+        background: white;
+        font-size: 11px;
+      }
+
+      .page {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+      }
+
+      .header {
+        padding: 14px 0 12px;
+      }
+
+      .header-text h1 { font-size: 22px; }
+      .header-text .tagline { font-size: 10px; }
+
+      .body {
+        padding: 14px 0 12px;
+      }
+
+      .roadmap-grid th { font-size: 11px; padding: 8px 10px; }
+      .roadmap-grid th .grade-num { font-size: 15px; }
+      .roadmap-grid td { font-size: 10px; padding: 7px 10px; }
+      .row-label { font-size: 9px; }
+
+      .panel-header h2 { font-size: 11px; }
+      .panel-body { padding: 10px 12px; }
+
+      .pathway-list li, .service-list li { font-size: 10px; padding: 4px 0; }
+      .pathway-desc, .service-desc { font-size: 9px; }
+
+      .footer { padding: 8px 0; }
+      .footer-quote, .footer-web { font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="assets/light-logo.svg" alt="Crown Roots Foundation" class="header-logo">
+    <div class="header-text">
+      <div class="org">Crown Roots Foundation</div>
+      <h1>Your 4-Year Playbook</h1>
+      <div class="tagline">What you do in high school shapes what's possible after.<br>Here's how to play it right — starting now.</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- 4-YEAR GRID -->
+    <div class="grid-section">
+      <table class="roadmap-grid">
+        <thead>
+          <tr>
+            <th style="width:90px;"></th>
+            <th class="grade-col">
+              <span class="grade-num">9th</span>
+              <span class="grade-theme">Build</span>
+            </th>
+            <th class="grade-col">
+              <span class="grade-num">10th</span>
+              <span class="grade-theme">Explore</span>
+            </th>
+            <th class="grade-col">
+              <span class="grade-num">11th</span>
+              <span class="grade-theme">Execute</span>
+            </th>
+            <th class="grade-col">
+              <span class="grade-num">12th</span>
+              <span class="grade-theme">Launch</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="row-label">Academics</td>
+            <td class="highlight"><strong>Your GPA starts now</strong> and never resets. First impressions matter — build strong study habits from day one.</td>
+            <td>Add an AP or dual enrollment course if you're ready. <strong>Challenge yourself</strong> — colleges and programs notice.</td>
+            <td>Take the hardest courses available to you. <strong>Academic rigor shows commitment</strong> — it opens doors.</td>
+            <td>Stay focused. Colleges <strong>review your senior grades</strong> even after you're accepted. Don't coast.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Testing</td>
+            <td>Learn what the <strong>SAT and ACT</strong> are. Understand the format and timeline so nothing surprises you.</td>
+            <td>Take the <strong>PSAT</strong> in October. See where you stand. Decide: SAT or ACT — which plays to your strengths?</td>
+            <td class="highlight"><strong>Take your SAT or ACT.</strong> Aim to finish testing by spring of junior year — before applications begin.</td>
+            <td>Retake if your score can improve. <strong>File your FAFSA</strong> as soon as it opens (Oct 1) — earlier = more money.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Get Involved</td>
+            <td><strong>Try things.</strong> Clubs, sports, volunteering, community. Find what you actually care about — not what looks good.</td>
+            <td>Narrow it down. <strong>Commit to 2–3 things</strong> you're genuinely invested in. Depth beats breadth every time.</td>
+            <td class="highlight"><strong>Take a leadership role.</strong> Captain, president, organizer. Let your story start to take shape.</td>
+            <td>Document everything — hours, roles, achievements. Your <strong>activity record tells colleges who you are</strong>.</td>
+          </tr>
+          <tr>
+            <td class="row-label">Think Ahead</td>
+            <td><strong>Job shadow.</strong> Find someone doing work you're curious about and ask to spend a day with them. Just start looking.</td>
+            <td><strong>Research schools, trades, and programs.</strong> No limits yet — explore everything. You don't have to decide yet.</td>
+            <td><strong>Visit campuses, programs, and job sites.</strong> Crown Roots can help fund this. See it in person — it changes everything.</td>
+            <td>Make your decision. <strong>National Decision Day: May 1.</strong> You've earned this moment. Commit and go.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- LOWER TWO PANELS -->
+    <div class="lower">
+
+      <!-- PATHWAYS PANEL -->
+      <div class="panel">
+        <div class="panel-header">
+          <h2>After High School — Your Options</h2>
+        </div>
+        <div class="panel-body">
+          <ul class="pathway-list">
+            <li>
+              <span class="pathway-dot dot-primary"></span>
+              <span>
+                <span class="pathway-name">4-Year University</span>
+                <span class="pathway-desc">Traditional degree. Biggest investment, biggest doors opened. Crown Roots matches you to schools YOU can afford.</span>
+              </span>
+            </li>
+            <li>
+              <span class="pathway-dot dot-primary"></span>
+              <span>
+                <span class="pathway-name">Community College → Transfer</span>
+                <span class="pathway-desc">Lower cost. Same destination. A smart, strategic path that works — especially if finances are tight.</span>
+              </span>
+            </li>
+            <li>
+              <span class="pathway-dot dot-alt"></span>
+              <span>
+                <span class="pathway-name">Trade / Vocational School</span>
+                <span class="pathway-desc">In-demand skills, strong income, and a faster path into the workforce. Electricians, welders, and HVAC techs earn well.</span>
+              </span>
+            </li>
+            <li>
+              <span class="pathway-dot dot-alt"></span>
+              <span>
+                <span class="pathway-name">Military</span>
+                <span class="pathway-desc">Training, education funding, and a career in one. Takes the ASVAB. ROTC can pay for college too.</span>
+              </span>
+            </li>
+            <li>
+              <span class="pathway-dot dot-alt"></span>
+              <span>
+                <span class="pathway-name">Apprenticeship / Workforce</span>
+                <span class="pathway-desc">Earn while you learn. Real skills. Real pay from day one. Many trades are actively hiring young people.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CROWN ROOTS SERVICES PANEL -->
+      <div class="panel">
+        <div class="panel-header">
+          <h2>What Crown Roots Does For You</h2>
+        </div>
+        <div class="panel-body">
+          <ul class="service-list">
+            <li>
+              <span class="service-icon">🎓</span>
+              <span>
+                <span class="service-title">College Matching</span>
+                <span class="service-desc">We match you to schools based on your GPA, income, and goals — schools where the money actually works for you.</span>
+              </span>
+            </li>
+            <li>
+              <span class="service-icon">💰</span>
+              <span>
+                <span class="service-title">Scholarship Alerts</span>
+                <span class="service-desc">Free money you don't pay back. We surface opportunities you'd never find on your own.</span>
+              </span>
+            </li>
+            <li>
+              <span class="service-icon">✈️</span>
+              <span>
+                <span class="service-title">Funded Campus Visits</span>
+                <span class="service-desc">We cover travel, lodging, and meals. You meet with real departments — not just tour guides.</span>
+              </span>
+            </li>
+            <li>
+              <span class="service-icon">🤝</span>
+              <span>
+                <span class="service-title">Mentorship</span>
+                <span class="service-desc">Connect with alumni who've done it — people who came from here and built something on the other side.</span>
+              </span>
+            </li>
+            <li>
+              <span class="service-icon">📋</span>
+              <span>
+                <span class="service-title">Intake & Tracking</span>
+                <span class="service-desc">We know where you started. We track your progress. We celebrate how far you've come — every year.</span>
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-quote">"Where you grow up should not determine whether you grow."</div>
+    <div class="footer-web">crownrootsfoundation.org</div>
+  </div>
+
+</div>
+
+</body>
+</html>
