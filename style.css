@@ -685,6 +685,42 @@ img, svg { max-width: 100%; height: auto; }
   margin-bottom: 10px;
 }
 
+/* Coming Soon cards */
+.video-card.coming-soon {
+  pointer-events: none;
+  opacity: 0.72;
+}
+
+.video-card.coming-soon .video-thumb {
+  cursor: default;
+}
+
+.video-card.coming-soon:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.video-card.coming-soon:hover .video-thumb img {
+  transform: none;
+}
+
+.coming-soon-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.62);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
 .video-info h3 {
   font-size: 17px;
   color: var(--dark-brown);

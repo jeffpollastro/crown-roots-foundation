@@ -49,9 +49,9 @@
         </div>
         <div class="card-grid">
 
-            <div class="video-card" data-vid="VIDEO_ID_4_1">
+            <div class="video-card" data-vid="bfXUD43cwEg">
                 <div class="video-thumb">
-                    <img src="https://img.youtube.com/vi/VIDEO_ID_4_1/maxresdefault.jpg" alt="Part 1 — Elite Schools Cost Too Much">
+                    <img src="assets/Pt 1 Ivy League Cover.png" alt="Part 1 — Elite Schools Cost Too Much">
                     <button class="play-btn" aria-label="Play: Elite Schools Cost Too Much">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
                     </button>
@@ -63,12 +63,10 @@
                 </div>
             </div>
 
-            <div class="video-card" data-vid="VIDEO_ID_4_2">
+            <div class="video-card coming-soon">
                 <div class="video-thumb">
-                    <img src="https://img.youtube.com/vi/VIDEO_ID_4_2/maxresdefault.jpg" alt="Part 2 — The One Form That Unlocks Everything">
-                    <button class="play-btn" aria-label="Play: The One Form That Unlocks Everything">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
-                    </button>
+                    <img src="assets/Pt 2 FAFSA Cover.png" alt="Part 2 — The One Form That Unlocks Everything">
+                    <span class="coming-soon-label">Coming Soon</span>
                 </div>
                 <div class="video-info">
                     <span class="video-badge">Part 2 of 3</span>
@@ -77,17 +75,55 @@
                 </div>
             </div>
 
-            <div class="video-card" data-vid="VIDEO_ID_2_1">
+            <div class="video-card coming-soon">
                 <div class="video-thumb">
-                    <img src="https://img.youtube.com/vi/VIDEO_ID_2_1/maxresdefault.jpg" alt="Part 3 — Scholar Pathway">
-                    <button class="play-btn" aria-label="Play: Scholar Pathway">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
-                    </button>
+                    <img src="assets/Pt 3 Scholarships Cover.png" alt="Part 3 — Scholar Pathway">
+                    <span class="coming-soon-label">Coming Soon</span>
                 </div>
                 <div class="video-info">
                     <span class="video-badge">Part 3 of 3</span>
                     <h3>Scholar Pathway</h3>
                     <p>Scholarships stack on top of grants. QuestBridge, Gates, Posse, Raise.me &mdash; programs with clear criteria and defined timelines.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-inner">
+        <div class="series-header">
+            <h2>The Opportunity Gap</h2>
+            <span class="series-meta">2 videos &middot; The data behind the mission</span>
+        </div>
+        <div class="card-grid">
+
+            <div class="video-card" data-vid="Eo8jdW8xRvw">
+                <div class="video-thumb">
+                    <img src="assets/The Gap Cover.png" alt="The Gap">
+                    <button class="play-btn" aria-label="Play: The Gap">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span class="video-badge">The Gap</span>
+                    <h3>The Gap</h3>
+                    <p>What separates Pocono students from opportunity &mdash; and why it&rsquo;s not about talent or work ethic.</p>
+                </div>
+            </div>
+
+            <div class="video-card" data-vid="ZHvIMNJowXo">
+                <div class="video-thumb">
+                    <img src="assets/Opportunity Gap cover.png" alt="The Opportunity Gap">
+                    <button class="play-btn" aria-label="Play: The Opportunity Gap">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span class="video-badge">The Opportunity Gap</span>
+                    <h3>The Opportunity Gap</h3>
+                    <p>The numbers that define why Crown Roots Foundation exists &mdash; and what closing the gap actually looks like.</p>
                 </div>
             </div>
 
@@ -113,7 +149,7 @@ document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('open');
 });
 
-document.querySelectorAll('.video-card').forEach(function(card) {
+document.querySelectorAll('.video-card[data-vid]').forEach(function(card) {
     var thumb = card.querySelector('.video-thumb');
     var vid = card.dataset.vid;
 
