@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /finance_tracker.html
+
+Sitemap: https://crownroots.org/sitemap.xml
