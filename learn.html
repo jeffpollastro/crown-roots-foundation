@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch &amp; Learn — Crown Roots Foundation</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/Crown Roots Foundation Favicon.png">
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/light-logo.svg" alt="">
+            <span>Crown Roots Foundation</span>
+        </a>
+        <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="opportunity-gap.html">Opportunity Gap</a></li>
+            <li><a href="college-database.html">College Database</a></li>
+            <li><a href="scholarships.html">Scholarships</a></li>
+            <li><a href="learn.html" class="active">Learn</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <img src="assets/light-logo.svg" alt="Crown Roots Foundation" class="logo-large">
+    <h1>Watch &amp; Learn</h1>
+    <p>Short-form financial aid education for Pocono families. Every video is under two minutes and built around one thing: the number that actually matters.</p>
+</div>
+
+<div class="section">
+    <div class="definition-box">
+        <strong>About this series:</strong> The Financial Aid Trilogy covers the three things every Pocono family needs to understand before a student applies anywhere &mdash; what sticker price actually means, how to unlock federal and state grant money, and how scholarships stack on top of everything else. Watch in order.
+    </div>
+</div>
+
+<div class="section-alt">
+    <div class="section-inner">
+        <div class="series-header">
+            <h2>Financial Aid Trilogy</h2>
+            <span class="series-meta">3 videos &middot; Watch in order</span>
+        </div>
+        <div class="card-grid">
+
+            <div class="video-card" data-vid="VIDEO_ID_4_1">
+                <div class="video-thumb">
+                    <img src="https://img.youtube.com/vi/VIDEO_ID_4_1/maxresdefault.jpg" alt="Part 1 — Elite Schools Cost Too Much">
+                    <button class="play-btn" aria-label="Play: Elite Schools Cost Too Much">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span class="video-badge">Part 1 of 3</span>
+                    <h3>Elite Schools Cost Too Much</h3>
+                    <p>Princeton&rsquo;s real cost for families earning under $150K is $0. Here&rsquo;s why sticker price is the number almost nobody pays.</p>
+                </div>
+            </div>
+
+            <div class="video-card" data-vid="VIDEO_ID_4_2">
+                <div class="video-thumb">
+                    <img src="https://img.youtube.com/vi/VIDEO_ID_4_2/maxresdefault.jpg" alt="Part 2 — The One Form That Unlocks Everything">
+                    <button class="play-btn" aria-label="Play: The One Form That Unlocks Everything">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span class="video-badge">Part 2 of 3</span>
+                    <h3>The One Form That Unlocks Everything</h3>
+                    <p>FAFSA, Pell Grant, PA State Grant, Grow PA &mdash; one free form triggers all of it. 40% of eligible students never file.</p>
+                </div>
+            </div>
+
+            <div class="video-card" data-vid="VIDEO_ID_2_1">
+                <div class="video-thumb">
+                    <img src="https://img.youtube.com/vi/VIDEO_ID_2_1/maxresdefault.jpg" alt="Part 3 — Scholar Pathway">
+                    <button class="play-btn" aria-label="Play: Scholar Pathway">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><polygon points="5,3 19,12 5,21"/></svg>
+                    </button>
+                </div>
+                <div class="video-info">
+                    <span class="video-badge">Part 3 of 3</span>
+                    <h3>Scholar Pathway</h3>
+                    <p>Scholarships stack on top of grants. QuestBridge, Gates, Posse, Raise.me &mdash; programs with clear criteria and defined timelines.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="cta-banner">
+    <h2>We Help You Stack Every Dollar</h2>
+    <p>Crown Roots Foundation helps Pocono families find, understand, and apply for every grant and scholarship available &mdash; before the deadlines close.</p>
+    <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+        <a href="college-database.html" class="btn btn-secondary">Explore the College Database</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Crown Roots Foundation. All rights reserved.</p>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+
+document.querySelectorAll('.video-card').forEach(function(card) {
+    var thumb = card.querySelector('.video-thumb');
+    var vid = card.dataset.vid;
+
+    function loadVideo() {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube-nocookie.com/embed/' + vid + '?autoplay=1&rel=0';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.setAttribute('allowfullscreen', '');
+        thumb.classList.add('playing');
+        thumb.innerHTML = '';
+        thumb.appendChild(iframe);
+        thumb.style.cursor = 'default';
+    }
+
+    thumb.addEventListener('click', loadVideo);
+    thumb.querySelector('.play-btn').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadVideo(); }
+    });
+});
+</script>
+
+</body>
+</html>
