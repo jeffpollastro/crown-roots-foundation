@@ -21,13 +21,53 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "NonprofitOrganization",
+      "@type": ["NGO", "EducationalOrganization"],
       "name": "Crown Roots Foundation",
+      "alternateName": "Crown Roots",
       "url": "https://crownroots.org",
       "logo": "https://crownroots.org/assets/Crown Roots Foundation Favicon.png",
-      "description": "Crown Roots Foundation expands opportunity for Pocono Mountain youth through basketball, mentorship, and college access programs.",
-      "areaServed": "Pocono Mountain, Pennsylvania",
-      "knowsAbout": ["college access", "financial aid", "youth mentorship", "basketball"],
+      "image": "https://crownroots.org/assets/Crown Roots Foundation Favicon.png",
+      "description": "Crown Roots Foundation expands opportunity for Pocono Mountain youth through basketball, mentorship, and college access programs — removing financial barriers to information, participation, and higher education.",
+      "areaServed": {
+        "@type": "Place",
+        "name": "Pocono Mountain, Monroe County, Pennsylvania"
+      },
+      "knowsAbout": [
+        "college access",
+        "no-loan financial aid",
+        "FAFSA",
+        "PHEAA State Grant",
+        "youth mentorship",
+        "basketball programs",
+        "first-generation college students",
+        "Pennsylvania scholarships",
+        "opportunity gap in education",
+        "higher education navigation",
+        "college affordability"
+      ],
+      "founder": [
+        { "@type": "Person", "name": "Wayne Jones" },
+        { "@type": "Person", "name": "Jeff Pollastro" }
+      ],
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Pocono Mountain, Pennsylvania"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "General Inquiry",
+        "url": "https://crownroots.org/contact.html"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Crown Roots Programs",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "College Access Advising" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "No-Loan College Database" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Basketball Program (Crown Hub)" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Campus Visit Programs" } }
+        ]
+      },
       "sameAs": []
     }
     </script>
