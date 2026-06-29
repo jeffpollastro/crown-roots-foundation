@@ -780,6 +780,150 @@ img, svg { max-width: 100%; height: auto; }
   font-weight: 600;
 }
 
+/* Nav right wrapper (donate + hamburger) */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Donate button — always visible in nav */
+.btn-nav-donate {
+  background: var(--gold);
+  color: var(--dark-brown) !important;
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 20px;
+  text-decoration: none !important;
+  transition: opacity 0.2s, transform 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.btn-nav-donate:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* Partner Tier Cards */
+.partner-tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.partner-tier {
+  background: var(--white);
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  padding: 28px 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  position: relative;
+  transition: box-shadow 0.22s, transform 0.22s;
+}
+
+.partner-tier:hover {
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+.partner-tier.featured {
+  border-color: var(--gold);
+  box-shadow: 0 4px 20px rgba(212,153,13,0.18);
+}
+
+.partner-tier.featured:hover {
+  box-shadow: 0 10px 40px rgba(212,153,13,0.25);
+}
+
+.partner-tier-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark-brown);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.partner-tier h3 {
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-size: 20px;
+  color: var(--dark-brown);
+  margin-bottom: 10px;
+}
+
+.partner-tier p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.partner-tier-cta {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.2px;
+}
+
+.partner-tier-cta:hover { text-decoration: underline; }
+
+/* Section divider */
+.section-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* Page intro subtext */
+.intro-text {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 0;
+  max-width: 640px;
+}
+
+/* Card icon (for pillar cards with SVG) */
+.card-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links a { padding: 12px 20px; }
@@ -811,4 +955,7 @@ img, svg { max-width: 100%; height: auto; }
   .play-btn svg { width: 22px; height: 22px; }
   .series-header { gap: 6px; }
   .featured-video h2 { font-size: 22px; }
+
+  .partner-tiers { grid-template-columns: 1fr; }
+  .btn-nav-donate { font-size: 12px; padding: 6px 12px; }
 }

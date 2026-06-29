@@ -1,0 +1,11 @@
+{
+  "name": "crown-roots-foundation",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  },
+  "scripts": {
+    "test": "playwright test"
+  }
+}
