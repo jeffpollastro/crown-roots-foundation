@@ -3,6 +3,5 @@ test-results/
 .DS_Store
 **/.DS_Store
 
-# Legal/financial documents, kept locally only, never tracked in git
+# Legal/financial documents not meant for public display, kept locally only, never tracked in git
 assets/Crown Roots 501c3 IRS.pdf
-assets/CRF_IRS_DeterminationLetter_2026.pdf
