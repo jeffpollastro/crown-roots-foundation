@@ -61,15 +61,37 @@
     <p>Expanding the worldview of Pocono Mountain youth &mdash; because the mountain is not the whole world, and every kid deserves to know that.</p>
 </div>
 
-<div class="photo-gallery">
-    <div class="photo-gallery-scroll">
-        <div class="gallery-photo"><img src="assets/crown roots_about1.webp" alt="United players in a scrimmage"></div>
-        <div class="gallery-photo"><img src="assets/crown roots_about3.webp" alt="United team lineup on the court"></div>
-        <div class="gallery-photo"><img src="assets/crown roots_about6.webp" alt="United player shooting during a game"></div>
-        <div class="gallery-photo"><img src="assets/crown roots_about2.webp" alt="Student working through coursework"></div>
-        <div class="gallery-photo"><img src="assets/crown roots_about5.webp" alt="Coach talking with United players"></div>
-        <div class="gallery-photo"><img src="assets/crown roots_about4.webp" alt="United teammates on the sideline"></div>
+<div class="photo-carousel-section">
+    <div class="photo-carousel">
+        <button class="carousel-arrow carousel-arrow-prev" id="carouselPrev" aria-label="Previous photo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+        </button>
+        <div class="carousel-track-wrap">
+            <div class="carousel-track" id="carouselTrack">
+                <div class="carousel-slide" data-index="0"><img src="assets/crown roots_about1.webp" alt="United players in a scrimmage"></div>
+                <div class="carousel-slide" data-index="1"><img src="assets/crown roots_about3.webp" alt="United team lineup on the court"></div>
+                <div class="carousel-slide" data-index="2"><img src="assets/crown roots_about6.webp" alt="United player shooting during a game"></div>
+                <div class="carousel-slide" data-index="3"><img src="assets/crown roots_about2.webp" alt="Student working through coursework"></div>
+                <div class="carousel-slide" data-index="4"><img src="assets/crown roots_about5.webp" alt="Coach talking with United players"></div>
+                <div class="carousel-slide" data-index="5"><img src="assets/crown roots_about4.webp" alt="United teammates on the sideline"></div>
+            </div>
+        </div>
+        <button class="carousel-arrow carousel-arrow-next" id="carouselNext" aria-label="Next photo">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+        </button>
     </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+</div>
+
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5"/></svg>
+    </button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5"/></svg>
+    </button>
 </div>
 
 <div class="section">
@@ -231,6 +253,87 @@
 document.querySelector('.nav-toggle').addEventListener('click', function() {
     document.querySelector('.nav-links').classList.toggle('open');
 });
+
+(function() {
+    var track = document.getElementById('carouselTrack');
+    var wrap = track.parentElement;
+    var slides = Array.prototype.slice.call(track.children);
+    var dotsWrap = document.getElementById('carouselDots');
+    var current = 0;
+
+    slides.forEach(function(slide, i) {
+        var dot = document.createElement('button');
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+        dot.addEventListener('click', function() { goTo(i); });
+        dotsWrap.appendChild(dot);
+
+        slide.addEventListener('click', function() {
+            if (i === current) { openLightbox(i); } else { goTo(i); }
+        });
+    });
+
+    var dots = Array.prototype.slice.call(dotsWrap.children);
+
+    function update() {
+        var slideWidth = slides[0].offsetWidth;
+        var gap = parseFloat(getComputedStyle(track).gap) || 0;
+        var offset = wrap.offsetWidth / 2 - slideWidth / 2 - current * (slideWidth + gap);
+        track.style.transform = 'translateX(' + offset + 'px)';
+        slides.forEach(function(s, i) { s.classList.toggle('active', i === current); });
+        dots.forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    }
+
+    function goTo(i) {
+        current = (i + slides.length) % slides.length;
+        update();
+    }
+
+    document.getElementById('carouselPrev').addEventListener('click', function() { goTo(current - 1); });
+    document.getElementById('carouselNext').addEventListener('click', function() { goTo(current + 1); });
+    window.addEventListener('resize', update);
+    update();
+
+    var lightbox = document.getElementById('lightbox');
+    var lightboxImg = document.getElementById('lightboxImg');
+    var lbIndex = 0;
+
+    function renderLightbox() {
+        var img = slides[lbIndex].querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+    }
+
+    function openLightbox(i) {
+        lbIndex = i;
+        renderLightbox();
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+        goTo(lbIndex);
+    }
+
+    function lbNav(delta) {
+        lbIndex = (lbIndex + delta + slides.length) % slides.length;
+        renderLightbox();
+    }
+
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    document.getElementById('lightboxPrev').addEventListener('click', function() { lbNav(-1); });
+    document.getElementById('lightboxNext').addEventListener('click', function() { lbNav(1); });
+    lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lbNav(-1);
+        if (e.key === 'ArrowRight') lbNav(1);
+    });
+})();
 
 var revealEls = document.querySelectorAll('.reveal');
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
