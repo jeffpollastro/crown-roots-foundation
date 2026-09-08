@@ -1066,24 +1066,21 @@ img, svg { max-width: 100%; height: auto; }
   padding-bottom: 6px;
 }
 
-.gallery-photo-slot {
-  flex: 0 0 200px;
+.gallery-photo {
+  flex: 0 0 220px;
   scroll-snap-align: start;
   aspect-ratio: 4 / 3;
   border-radius: 10px;
-  background: linear-gradient(135deg, var(--section-bg), #efe6cf);
-  border: 2px dashed var(--accent-gold);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  color: var(--text-muted);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
-.gallery-photo-slot svg { width: 26px; height: 26px; color: var(--gold); }
-.gallery-photo-slot span { font-size: 12px; font-weight: 600; letter-spacing: 0.2px; }
+.gallery-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 /* Program Showcase (United / Crown Hub panels) */
 .program-panel {
@@ -1158,7 +1155,7 @@ img, svg { max-width: 100%; height: auto; }
 .program-cards .card-icon { width: 26px; height: 26px; margin-bottom: 8px; }
 
 @media (max-width: 768px) {
-  .gallery-photo-slot { flex-basis: 150px; }
+  .gallery-photo { flex-basis: 160px; }
   .program-panel { grid-template-columns: 1fr; text-align: center; padding: 22px; }
   .program-panel-visual img { max-width: 220px; margin: 0 auto; }
 }
