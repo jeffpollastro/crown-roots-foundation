@@ -66,14 +66,12 @@ img, svg { max-width: 100%; height: auto; }
 }
 
 .nav-brand img {
-  height: 88px;
+  height: 56px;
   width: auto;
 }
 
-.nav-brand span {
-  font-family: 'Righteous', system-ui, sans-serif;
-  color: var(--gold);
-  font-size: 18px;
+@media (max-width: 768px) {
+  .nav-brand img { height: 44px; }
 }
 
 .nav-links {
