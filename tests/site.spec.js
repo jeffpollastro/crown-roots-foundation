@@ -5,6 +5,7 @@ const ALL_PAGES = [
   '/about.html',
   '/college-database.html',
   '/tools.html',
+  '/outcome.html',
   '/learn.html',
   '/board.html',
   '/contact.html',
@@ -59,6 +60,19 @@ test('tools.html has In/Root and Out/Come doors', async ({ page }) => {
   await expect(page.locator('.io-door')).toHaveCount(2);
   await expect(page.locator('#inroot a[href="college-database.html"]')).toBeVisible();
   await expect(page.locator('#outcome a[href="https://outcome.crownroots.org/login"]')).toBeVisible();
+});
+
+test('outcome.html welcomes families and points non-students to In/Root', async ({ page }) => {
+  await page.goto('/outcome.html');
+  await expect(page.locator('h1')).toContainText('Welcome, Crown Roots families');
+  await expect(page.locator('.oc-hero a[href="https://outcome.crownroots.org/login"]')).toBeVisible();
+  await expect(page.locator('#not-a-student a[href="college-database.html"]')).toBeVisible();
+  await expect(page.locator('a[href*="/register"]')).toHaveCount(0);
+});
+
+test('tools.html Out/Come door leads to outcome.html', async ({ page }) => {
+  await page.goto('/tools.html');
+  await expect(page.locator('#outcome a[href="outcome.html"]')).toBeVisible();
 });
 
 test('Nav does not list Scholarships', async ({ page }) => {

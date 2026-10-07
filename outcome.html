@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Out/Come | Crown Roots Foundation</title>
+    <meta name="description" content="Out/Come is the private home for Crown Roots students: the colleges, scholarships, and next steps our team has put together for each one.">
+    <link rel="canonical" href="https://crownroots.org/outcome.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crownroots.org/outcome.html">
+    <meta property="og:title" content="Out/Come | Crown Roots Foundation">
+    <meta property="og:description" content="The private home for Crown Roots students.">
+    <meta property="og:site_name" content="Crown Roots Foundation">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/Crown Roots Foundation Favicon.png">
+    <style>
+        .oc-hero {
+            background: var(--white);
+            text-align: center;
+            padding: 56px 20px 48px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .oc-hero .oc-wordmark {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .oc-hero .oc-definition {
+            max-width: 620px;
+            margin: 18px auto 0;
+            font-size: 14px;
+            font-style: italic;
+            color: var(--text-light);
+        }
+
+        .oc-hero .oc-definition strong { color: var(--text); }
+
+        .oc-hero h1 {
+            font-size: 38px;
+            color: var(--dark-brown);
+            margin: 36px 0 12px;
+        }
+
+        .oc-hero .oc-lede {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 620px;
+            margin: 0 auto 28px;
+        }
+
+        .oc-hero .oc-quiet {
+            display: block;
+            margin-top: 16px;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .oc-invited {
+            background: var(--white);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            padding: 28px 32px;
+        }
+
+        .oc-invited h2 { margin-bottom: 12px; }
+        .oc-invited p { font-size: 16px; color: var(--text-light); line-height: 1.7; }
+
+        .oc-inside { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+        .oc-two {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .oc-two .card h3 { font-size: 20px; }
+        .oc-two .card p { font-size: 15px; line-height: 1.6; }
+
+        .io-steps {
+            counter-reset: io-step;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            margin-top: 24px;
+        }
+
+        .io-steps .card { position: relative; padding-top: 52px; }
+
+        .io-steps .card::before {
+            counter-increment: io-step;
+            content: counter(io-step);
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .oc-two { grid-template-columns: 1fr; }
+            .oc-hero h1 { font-size: 30px; }
+            .oc-invited { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/Crown Roots OFFICIAL LIGHT.svg" alt="Crown Roots Foundation">
+        </a>
+        <div class="nav-right">
+            <a href="https://www.zeffy.com/en-US/donation-form/donate-to-pocono-youth-opportunity" class="btn-nav-donate" target="_blank" rel="noopener noreferrer">Donate</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tools.html" class="active">Tools</a></li>
+            <li><a href="learn.html">Resources</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="contact.html">Partners</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="oc-hero">
+    <img src="assets/outcome-logo.svg" alt="Out/Come" class="oc-wordmark">
+    <p class="oc-definition"><strong>Out/Come, n.</strong> a Crown Roots student's path <strong>out</strong> into the world, and their path back into the community they <strong>come</strong> from.</p>
+    <h1>Welcome, Crown Roots families.</h1>
+    <p class="oc-lede">Out/Come is the private home for Crown Roots students. If you were invited, this is yours.</p>
+    <a href="https://outcome.crownroots.org/login" class="btn btn-dark">Sign in</a>
+    <a href="#not-a-student" class="oc-quiet">Not a Crown Roots student? Start with In/Root.</a>
+</div>
+
+<div class="section" style="padding-bottom: 0;">
+    <div class="oc-invited reveal">
+        <h2>You Were Invited for a Reason</h2>
+        <p>Out/Come is not open to the public, and that is on purpose. Every account starts with a conversation. A Crown Roots staff member sits down with a student and their family, listens, and builds a plan around that one student. What you find inside was put together for you.</p>
+    </div>
+</div>
+
+<div class="section" style="padding-bottom: 0;">
+    <h2>What's Waiting Inside</h2>
+    <div class="card-grid oc-inside reveal">
+        <div class="card"><h3>My Roadmap</h3><p>The steps for this year, and what comes next.</p></div>
+        <div class="card"><h3>My Colleges</h3><p>Schools our team has reviewed for you, with what your family would really pay.</p></div>
+        <div class="card"><h3>Scholarships</h3><p>Ones you are eligible for, already checked.</p></div>
+        <div class="card"><h3>My Profile</h3><p>Your academic snapshot, all in one place.</p></div>
+        <div class="card"><h3>My Pen and Pad</h3><p>A place to write your essays and get feedback from your advisor.</p></div>
+        <div class="card"><h3>Application Tools</h3><p>FAFSA help, free test prep, test dates, and deadlines.</p></div>
+        <div class="card"><h3>My Calendar and My Checklist</h3><p>So nothing sneaks up on you.</p></div>
+        <div class="card"><h3>My Summary</h3><p>Notes from your advisor on how far you have come.</p></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="oc-two reveal">
+        <div class="card">
+            <h3>Why It's Private</h3>
+            <p>Out/Come holds real information about real students: grades, goals, and family circumstances. Only you and Crown Roots staff can see your account.</p>
+        </div>
+        <div class="card">
+            <h3>Have an Invitation?</h3>
+            <p>Your Crown Roots advisor will give you a sign-up link. Create your account, and your advisor takes it from there. If you can't find your link, ask your advisor.</p>
+        </div>
+    </div>
+</div>
+
+<!-- How it works -->
+<div class="section-alt" id="how-outcome-works">
+    <div class="section-inner">
+        <h2>How Out/Come Works</h2>
+        <p>For partners and supporters, here is what happens on the staff side.</p>
+        <div class="card-grid io-steps reveal">
+            <div class="card">
+                <h3>Intake</h3>
+                <p>A staff member walks through a structured intake with the student: grades, interests, household situation, and goals. Nothing is filled out alone.</p>
+            </div>
+            <div class="card">
+                <h3>Pathway and Progress</h3>
+                <p>Each student gets a high school pathway and a progress tracker, so everyone can see what has been done and what comes next.</p>
+            </div>
+            <div class="card">
+                <h3>College and Scholarship Matches</h3>
+                <p>The system matches each student to affordable colleges and scholarships they are eligible for, along with test prep dates and deadlines.</p>
+            </div>
+            <div class="card">
+                <h3>Staff Review</h3>
+                <p>Our team reviews every match before a student sees it. Students do not browse raw data. They see a short list that has been checked and explained.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-banner" id="not-a-student">
+    <h2>Not a Crown Roots Student?</h2>
+    <p>In/Root is for everyone. It is our free college search, built so any family can see what college would really cost them before ruling a school out.</p>
+    <div class="cta-buttons">
+        <a href="college-database.html" class="btn btn-primary">Explore In/Root</a>
+        <a href="tools.html" class="btn btn-secondary">Back to I/O Tools</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Crown Roots Foundation. All rights reserved. &mdash; 501(c)(3) Nonprofit &mdash; EIN: 41-5008417</p>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+
+var revealEls = document.querySelectorAll('.reveal');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el) { revealObserver.observe(el); });
+} else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+}
+</script>
+
+</body>
+</html>

@@ -105,31 +105,6 @@
 
         .io-door-actions .btn { padding: 12px 20px; font-size: 15px; }
 
-        .io-steps {
-            counter-reset: io-step;
-            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-            margin-top: 24px;
-        }
-
-        .io-steps .card { position: relative; padding-top: 52px; }
-
-        .io-steps .card::before {
-            counter-increment: io-step;
-            content: counter(io-step);
-            position: absolute;
-            top: 20px;
-            left: 24px;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--gold);
-            color: var(--white);
-            font-size: 13px;
-            font-weight: 700;
-            line-height: 24px;
-            text-align: center;
-        }
-
         @media (max-width: 760px) {
             .io-idea, .io-doors { grid-template-columns: 1fr; }
             .io-mark { width: 96px; height: 96px; }
@@ -205,35 +180,9 @@
                 <div class="io-door-sub">Student Intake System</div>
                 <p class="io-door-text">Where our staff sit down with each student, learn their situation, and build a plan. Students sign in to see the colleges and scholarships our team has reviewed and approved for them.</p>
                 <div class="io-door-actions">
-                    <a href="#how-outcome-works" class="btn btn-primary">See how it works</a>
+                    <a href="outcome.html" class="btn btn-primary">See how it works</a>
                     <a href="https://outcome.crownroots.org/login" class="btn btn-secondary" target="_blank" rel="noopener">Sign in</a>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Out/Come walkthrough -->
-<div class="section-alt" id="how-outcome-works">
-    <div class="section-inner">
-        <h2>How Out/Come Works</h2>
-        <p>Out/Come sits behind a login because it holds student information. Here is what happens inside.</p>
-        <div class="card-grid io-steps reveal">
-            <div class="card">
-                <h3>Intake</h3>
-                <p>A staff member walks through a structured intake with the student: grades, interests, household situation, and goals. Nothing is filled out alone.</p>
-            </div>
-            <div class="card">
-                <h3>Pathway and Progress</h3>
-                <p>Each student gets a high school pathway and a progress tracker, so everyone can see what has been done and what comes next.</p>
-            </div>
-            <div class="card">
-                <h3>College and Scholarship Matches</h3>
-                <p>The system matches each student to affordable colleges and scholarships they are eligible for, along with test prep dates and deadlines.</p>
-            </div>
-            <div class="card">
-                <h3>Staff Review</h3>
-                <p>Our team reviews every match before a student sees it. Students do not browse raw data. They see a short list that has been checked and explained.</p>
             </div>
         </div>
     </div>
