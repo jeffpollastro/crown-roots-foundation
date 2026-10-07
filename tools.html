@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I/O Tools | Crown Roots Foundation</title>
+    <meta name="description" content="I/O is the software Crown Roots Foundation builds and owns to close the information gap for Pocono Mountain families: In/Root, a free college search database, and Out/Come, our student intake system.">
+    <link rel="canonical" href="https://crownroots.org/tools.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://crownroots.org/tools.html">
+    <meta property="og:title" content="I/O Tools | Crown Roots Foundation">
+    <meta property="og:description" content="In/Root and Out/Come: the tools Crown Roots Foundation builds to close the information gap for Pocono Mountain families.">
+    <meta property="og:image" content="https://crownroots.org/assets/inroot-banner.png">
+    <meta property="og:site_name" content="Crown Roots Foundation">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/Crown Roots Foundation Favicon.png">
+    <style>
+        .io-mark {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .io-idea {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .io-idea .definition-box { margin: 0; font-size: 15px; }
+
+        .io-doors {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .io-door {
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .io-door-mark {
+            padding: 36px 32px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .io-door-mark img {
+            display: block;
+            height: 84px;
+            max-width: 100%;
+        }
+
+        .io-door-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .io-door-kicker {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+        }
+
+        .io-door h3 {
+            font-size: 24px;
+            color: var(--dark-brown);
+            margin-bottom: 4px;
+        }
+
+        .io-door-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+        }
+
+        .io-door p.io-door-text {
+            font-size: 15px;
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .io-door-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .io-door-actions .btn { padding: 12px 20px; font-size: 15px; }
+
+        .io-steps {
+            counter-reset: io-step;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            margin-top: 24px;
+        }
+
+        .io-steps .card { position: relative; padding-top: 52px; }
+
+        .io-steps .card::before {
+            counter-increment: io-step;
+            content: counter(io-step);
+            position: absolute;
+            top: 20px;
+            left: 24px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--white);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 760px) {
+            .io-idea, .io-doors { grid-template-columns: 1fr; }
+            .io-mark { width: 96px; height: 96px; }
+            .io-door-mark { padding: 28px 24px; }
+            .io-door-mark img { height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="site-nav">
+    <div class="nav-inner">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/Crown Roots OFFICIAL LIGHT.svg" alt="Crown Roots Foundation">
+        </a>
+        <div class="nav-right">
+            <a href="https://www.zeffy.com/en-US/donation-form/donate-to-pocono-youth-opportunity" class="btn-nav-donate" target="_blank" rel="noopener noreferrer">Donate</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">&#9776;</button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="tools.html" class="active">Tools</a></li>
+            <li><a href="learn.html">Resources</a></li>
+            <li><a href="board.html">Board</a></li>
+            <li><a href="contact.html">Partners</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="hero">
+    <img src="assets/io-logo.svg" alt="I/O" class="io-mark">
+    <h1>I/O</h1>
+    <p>The software Crown Roots Foundation builds and owns to close the information gap for Pocono Mountain families.</p>
+</div>
+
+<!-- The idea -->
+<div class="section" style="padding-bottom: 0;">
+    <h2>Two Tools, One Path</h2>
+    <p>Families here are not short on talent or effort. They are short on information: what college really costs, which schools meet full need, and what steps to take in which year. I/O is how we put that information in their hands.</p>
+    <p><strong>In</strong> is what a family learns. <strong>Out</strong> is where a student goes.</p>
+    <div class="io-idea reveal">
+        <div class="definition-box">
+            <strong>In/Root, n.</strong> a family's insight <strong>into</strong> The Gap, school by school; a student <strong>en route</strong> to their own growth.
+        </div>
+        <div class="definition-box">
+            <strong>Out/Come, n.</strong> a Crown Roots student's path <strong>out</strong> into the world, and their path back into the community they <strong>come</strong> from.
+        </div>
+    </div>
+</div>
+
+<!-- Two doors -->
+<div class="section">
+    <div class="io-doors reveal">
+        <div class="io-door" id="inroot">
+            <div class="io-door-mark"><img src="assets/inroot-logo.svg" alt="In/Root"></div>
+            <div class="io-door-body">
+                <div class="io-door-kicker">Free and open to everyone</div>
+                <h3>In/Root</h3>
+                <div class="io-door-sub">College Search Database</div>
+                <p class="io-door-text">Search colleges by what a family at your income level would actually pay, not the sticker price. Built so any Pocono family can see the real numbers before they rule a school out.</p>
+                <div class="io-door-actions">
+                    <a href="college-database.html" class="btn btn-primary">Explore In/Root &rarr;</a>
+                    <a href="https://inroot.crownroots.org" class="btn btn-secondary" target="_blank" rel="noopener">Open the app</a>
+                </div>
+            </div>
+        </div>
+        <div class="io-door" id="outcome">
+            <div class="io-door-mark"><img src="assets/outcome-logo.svg" alt="Out/Come"></div>
+            <div class="io-door-body">
+                <div class="io-door-kicker">For Crown Roots students and staff</div>
+                <h3>Out/Come</h3>
+                <div class="io-door-sub">Student Intake System</div>
+                <p class="io-door-text">Where our staff sit down with each student, learn their situation, and build a plan. Students sign in to see the colleges and scholarships our team has reviewed and approved for them.</p>
+                <div class="io-door-actions">
+                    <a href="#how-outcome-works" class="btn btn-primary">See how it works</a>
+                    <a href="https://outcome.crownroots.org/login" class="btn btn-secondary" target="_blank" rel="noopener">Sign in</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Out/Come walkthrough -->
+<div class="section-alt" id="how-outcome-works">
+    <div class="section-inner">
+        <h2>How Out/Come Works</h2>
+        <p>Out/Come sits behind a login because it holds student information. Here is what happens inside.</p>
+        <div class="card-grid io-steps reveal">
+            <div class="card">
+                <h3>Intake</h3>
+                <p>A staff member walks through a structured intake with the student: grades, interests, household situation, and goals. Nothing is filled out alone.</p>
+            </div>
+            <div class="card">
+                <h3>Pathway and Progress</h3>
+                <p>Each student gets a high school pathway and a progress tracker, so everyone can see what has been done and what comes next.</p>
+            </div>
+            <div class="card">
+                <h3>College and Scholarship Matches</h3>
+                <p>The system matches each student to affordable colleges and scholarships they are eligible for, along with test prep dates and deadlines.</p>
+            </div>
+            <div class="card">
+                <h3>Staff Review</h3>
+                <p>Our team reviews every match before a student sees it. Students do not browse raw data. They see a short list that has been checked and explained.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cta-banner">
+    <h2>Built Here, Owned by the Foundation</h2>
+    <p>Both tools are built and owned by Crown Roots Foundation, a 501(c)(3) nonprofit. In/Root is free for every family.</p>
+    <div class="cta-buttons">
+        <a href="contact.html" class="btn btn-primary">Become a Partner</a>
+        <a href="about.html#opportunity-gap" class="btn btn-secondary">See the Data</a>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <p>&copy; 2026 Crown Roots Foundation. All rights reserved. &mdash; 501(c)(3) Nonprofit &mdash; EIN: 41-5008417</p>
+</footer>
+
+<script>
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('open');
+});
+
+var revealEls = document.querySelectorAll('.reveal');
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var revealObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+        });
+    }, { threshold: 0.1 });
+    revealEls.forEach(function(el) { revealObserver.observe(el); });
+} else {
+    revealEls.forEach(function(el) { el.classList.add('visible'); });
+}
+</script>
+
+</body>
+</html>

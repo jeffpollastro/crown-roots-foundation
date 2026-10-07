@@ -4,6 +4,7 @@ const ALL_PAGES = [
   '/index.html',
   '/about.html',
   '/college-database.html',
+  '/tools.html',
   '/learn.html',
   '/board.html',
   '/contact.html',
@@ -45,6 +46,19 @@ test('Nav shows Resources for learn.html', async ({ page }) => {
 test('Nav does not list Opportunity Gap', async ({ page }) => {
   await page.goto('/index.html');
   await expect(page.locator('.nav-links a[href="opportunity-gap.html"]')).toHaveCount(0);
+});
+
+test('Nav shows Tools in place of College Database', async ({ page }) => {
+  await page.goto('/index.html');
+  await expect(page.locator('.nav-links a[href="tools.html"]')).toHaveText('Tools');
+  await expect(page.locator('.nav-links a[href="college-database.html"]')).toHaveCount(0);
+});
+
+test('tools.html has In/Root and Out/Come doors', async ({ page }) => {
+  await page.goto('/tools.html');
+  await expect(page.locator('.io-door')).toHaveCount(2);
+  await expect(page.locator('#inroot a[href="college-database.html"]')).toBeVisible();
+  await expect(page.locator('#outcome a[href="https://outcome.crownroots.org/login"]')).toBeVisible();
 });
 
 test('Nav does not list Scholarships', async ({ page }) => {
