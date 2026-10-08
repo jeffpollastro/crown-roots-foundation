@@ -74,10 +74,10 @@
         },
         {
           "@type": "Question",
-          "name": "What is a Crown Roots Pick college?",
+          "name": "What is the Crown Top 10?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Crown Roots Pick is a college where The Gap — the out-of-pocket cost after all grant aid — falls below $12,000 per year for a given family income bracket. These are high-endowment schools within 4–5 hours of the Pocono Mountains, verified by Crown Roots Foundation to offer strong need-based aid packages for low- and middle-income Pennsylvania families."
+            "text": "The Crown Top 10 is Crown Roots Foundation's list of ten colleges that a typical Crown Roots student (a 3.2 to 3.7 GPA and about an 1100 SAT) can realistically get into, that a Pocono family earning under $75,000 can pay for, and that lead to careers our students ask about. Schools are ranked on what a sample family would owe each year after grants, using each school's own cost calculator, and on what graduates of specific programs earn. Very selective schools that can cost little or nothing are listed separately as Hidden Value Schools."
           }
         },
         {
@@ -120,6 +120,55 @@
         .bracket-selector select:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba(212,153,13,0.2);
+        }
+
+        /* ── Picks toggle and Crown Top 10 ── */
+        .picks-toggle {
+            display: inline-flex;
+            border: 2px solid var(--dark-brown);
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 8px 0 14px;
+        }
+        .picks-toggle button {
+            font: inherit;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 10px 18px;
+            border: none;
+            background: var(--white);
+            color: var(--dark-brown);
+            cursor: pointer;
+        }
+        .picks-toggle button[aria-selected="true"] { background: var(--dark-brown); color: var(--gold); }
+        .picks-toggle button:focus-visible { outline: 3px solid var(--gold); outline-offset: -3px; }
+        .picks-who {
+            background: var(--section-bg);
+            border-left: 4px solid var(--gold);
+            border-radius: 4px;
+            padding: 14px 18px;
+            font-size: 15px;
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+        #top10Table { width: 100%; border-collapse: collapse; font-size: 14px; }
+        #top10Table thead tr { background: var(--dark-brown); color: var(--gold); }
+        #top10Table th { padding: 11px 12px; text-align: left; font-weight: 600; white-space: nowrap; }
+        #top10Table td { padding: 12px; vertical-align: top; border-bottom: 1px solid var(--border); }
+        #top10Table tbody tr:hover { background: #fffbf0; }
+        #top10Table .t10-rank { font-family: 'Righteous', sans-serif; font-size: 18px; color: var(--gold); text-align: center; width: 40px; }
+        #top10Table .t10-name { font-weight: 600; color: var(--dark-brown); }
+        #top10Table .t10-why { display: block; font-size: 13px; color: var(--text-light); margin-top: 2px; }
+        #top10Table .t10-owed { font-weight: 700; white-space: nowrap; }
+        #top10Table .t10-deg-m { display: none; font-size: 13px; color: var(--text); margin-top: 6px; }
+        @media (max-width: 700px) {
+            .picks-toggle { display: flex; }
+            .picks-toggle button { flex: 1; padding: 10px 8px; font-size: 14px; }
+            #top10Table th:nth-child(4), #top10Table td:nth-child(4),
+            #top10Table th:nth-child(5), #top10Table td:nth-child(5) { display: none; } /* degrees move under the name; drive hidden */
+            #top10Table .t10-deg-m { display: block; }
+            #top10Table .t10-owed { white-space: normal; }
         }
 
         /* ── Crown Roots Pick Badge ── */
@@ -344,8 +393,8 @@
                 <p>Check up to 3 schools and compare them side-by-side against the ESU baseline &mdash; what your family would pay, and what you'd save.</p>
             </div>
             <div class="card" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto;">
-                <h3>4. Crown Roots Picks</h3>
-                <p>Schools where The Gap falls below $12,000/year for your bracket earn the <strong>★ Crown Roots Pick</strong> designation &mdash; verified high-endowment schools worth a serious look.</p>
+                <h3>4. Crown Top 10</h3>
+                <p>Ten schools a typical Crown Roots student can get into and a working Pocono family can pay for. <a href="#crown-top-10" style="color: var(--gold); font-weight: 600;">See the list</a></p>
             </div>
         </div>
     </div>
@@ -405,9 +454,107 @@
 <!-- ═══════════════════════════════════════════════════════
      HIDDEN VALUE SCHOOLS — Live Database Section
 ════════════════════════════════════════════════════════ -->
-<div class="section" id="hiddenValueSection">
+<div class="section" id="crown-top-10" style="padding-bottom: 0;">
+    <h2>Our School Picks</h2>
+    <div class="picks-toggle" role="tablist" aria-label="Choose a list of schools">
+        <button type="button" role="tab" id="tabTop10" aria-selected="true" aria-controls="top10Panel">Crown Top 10</button>
+        <button type="button" role="tab" id="tabHidden" aria-selected="false" aria-controls="hiddenValueSection">Hidden Value Schools</button>
+    </div>
+    <p id="picksExplain" style="font-size: 15px; color: var(--text-light); margin-bottom: 18px;"></p>
+
+    <div id="top10Panel" role="tabpanel" aria-labelledby="tabTop10">
+        <div class="picks-who">
+            If you are a student with a <strong>3.2 to 3.7 GPA</strong> and about an <strong>1100 SAT</strong>, from a family earning <strong>under $75,000 a year</strong>, these are strong options for Pocono families, along with the degrees worth pursuing at each.
+        </div>
+        <div class="table-scroll">
+            <table id="top10Table">
+                <thead><tr><th></th><th>School</th><th>Owed per year</th><th>Degrees worth pursuing</th><th>Drive</th></tr></thead>
+                <tbody>
+                <tr>
+                    <td class="t10-rank">1</td>
+                    <td><span class="t10-name">Pitt-Johnstown (PA)</span><span class="t10-why">Lowest bill we found. Pitt matches the Pell Grant dollar for dollar.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Computer, electrical, mechanical, chemical, and civil engineering; computer science; finance; accounting</span></td>
+                    <td class="t10-owed">$7,411*</td>
+                    <td>Computer, electrical, mechanical, chemical, and civil engineering; computer science; finance; accounting</td>
+                    <td style="white-space:nowrap;">4 hr 15 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">2</td>
+                    <td><span class="t10-name">Youngstown State (OH)</span><span class="t10-why">Charges Pennsylvania students almost the Ohio price. Strong engineering.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Electrical, chemical, mechanical, civil, and industrial engineering; computer science; nursing; accounting</span></td>
+                    <td class="t10-owed">$10,966</td>
+                    <td>Electrical, chemical, mechanical, civil, and industrial engineering; computer science; nursing; accounting</td>
+                    <td style="white-space:nowrap;">4 hr 45 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">3</td>
+                    <td><span class="t10-name">Slippery Rock (PA)</span><span class="t10-why">Best graduation rates on the list.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Safety management; civil and mechanical engineering; nursing; accounting; finance</span></td>
+                    <td class="t10-owed">$8,666</td>
+                    <td>Safety management; civil and mechanical engineering; nursing; accounting; finance</td>
+                    <td style="white-space:nowrap;">5 hr</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">4</td>
+                    <td><span class="t10-name">Commonwealth University (Bloomsburg) (PA)</span><span class="t10-why">Large nursing program close to home.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Nursing; computer science; business; special education; social work</span></td>
+                    <td class="t10-owed">$8,732</td>
+                    <td>Nursing; computer science; business; special education; social work</td>
+                    <td style="white-space:nowrap;">1 hr 30 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">5</td>
+                    <td><span class="t10-name">PennWest (PA)</span><span class="t10-why">Clear scholarship amounts by GPA, so families know where they stand.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Nursing; mechatronics and electrical engineering technology; accounting; finance; art</span></td>
+                    <td class="t10-owed">$8,747</td>
+                    <td>Nursing; mechatronics and electrical engineering technology; accounting; finance; art</td>
+                    <td style="white-space:nowrap;">4 to 5 hr 30 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">6</td>
+                    <td><span class="t10-name">Indiana University of Pennsylvania (PA)</span><span class="t10-why">Safety sciences graduates earn as much as engineers.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Safety sciences; nursing; computer science; finance; accounting; design</span></td>
+                    <td class="t10-owed">$7,700 to $9,800*</td>
+                    <td>Safety sciences; nursing; computer science; finance; accounting; design</td>
+                    <td style="white-space:nowrap;">4 hr 30 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">7</td>
+                    <td><span class="t10-name">East Stroudsburg (PA)</span><span class="t10-why">Home. Computing and nursing are the programs to look at.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Computer science; nursing; special education; social work</span></td>
+                    <td class="t10-owed">$7,550 to $9,650*</td>
+                    <td>Computer science; nursing; special education; social work</td>
+                    <td style="white-space:nowrap;">Local</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">8</td>
+                    <td><span class="t10-name">University of Akron (OH)</span><span class="t10-why">Paid co-op built into engineering. Costs more than Youngstown State.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Chemical, mechanical, civil, and biomedical engineering; finance; accounting</span></td>
+                    <td class="t10-owed">$15,827</td>
+                    <td>Chemical, mechanical, civil, and biomedical engineering; finance; accounting</td>
+                    <td style="white-space:nowrap;">5 hr 30 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">9</td>
+                    <td><span class="t10-name">Daemen University (NY)</span><span class="t10-why">A private college whose aid brings it under $15,000.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Nursing; health science paths toward physical therapy and physician assistant</span></td>
+                    <td class="t10-owed">$14,325</td>
+                    <td>Nursing; health science paths toward physical therapy and physician assistant</td>
+                    <td style="white-space:nowrap;">4 hr 45 min</td>
+                </tr>
+                <tr>
+                    <td class="t10-rank">10</td>
+                    <td><span class="t10-name">Kutztown University (PA)</span><span class="t10-why">Our creative pick.</span><span class="t10-deg-m"><strong>Degrees worth pursuing:</strong> Communication design; teacher education; social work</span></td>
+                    <td class="t10-owed">$9,596</td>
+                    <td>Communication design; teacher education; social work</td>
+                    <td style="white-space:nowrap;">1 hr</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="definition-box" style="margin-top: 20px;">
+            <strong>How to read the price.</strong> It is what one sample family would owe the school each year for tuition, fees, housing, and food after grants, before loans. The sample family: Pennsylvania residents, household of five, $56,000 income, student with a 3.5 GPA and 1110 SAT living on campus. Prices come from each school's own cost calculator and are estimates, not offers. Your cost will be different, so run the school's calculator with your own numbers. Drive times from Stroudsburg are approximate.<br>
+            * Based on older calculator data. Expect the current figure to differ.<br>
+            <strong>Last reviewed:</strong> October 2026.
+        </div>
+        <p style="margin-top: 18px;"><a href="https://inroot.crownroots.org" target="_blank" rel="noopener" class="btn btn-primary">Look up any school in In/Root &rarr;</a></p>
+    </div>
+</div>
+
+<div class="section" id="hiddenValueSection" role="tabpanel" aria-labelledby="tabHidden" hidden>
     <h2>Hidden Value Schools</h2>
-    <p>High-endowment schools within 4&ndash;5 hours of the Poconos where The Gap beats East Stroudsburg University &mdash; schools Pocono families rarely consider. The <strong>★ Crown Roots Pick</strong> badge marks schools where The Gap falls below $12,000/year for your selected bracket.</p>
+    <p>High-endowment schools within 4&ndash;5 hours of the Poconos where The Gap beats East Stroudsburg University &mdash; schools Pocono families rarely consider. The <strong>★ Under $12K</strong> badge marks schools where The Gap falls below $12,000/year for your selected bracket.</p>
 
     <div class="bracket-selector">
         <label for="bracketSelect">Your family income bracket:</label>
@@ -436,7 +583,7 @@
     </div>
 
     <div class="definition-box" style="margin-top: 24px;">
-        <strong>Data source:</strong> Net price figures from Tuition Tracker (IPEDS Finance Survey, FY2023&ndash;24). ESU figures are the baseline for Pocono families — every other school on this list costs less for the selected income bracket. Acceptance rates are approximate; verify at each institution.
+        <strong>Data source:</strong> Net price figures from Tuition Tracker (IPEDS Finance Survey, FY2023&ndash;24). ESU figures are the baseline for Pocono families — every other school on this list costs less for the selected income bracket. Acceptance rates are approximate; verify at each institution. <strong>Lehigh</strong> is the exception: its Lehigh Commitment is newer than the published data, so its figures come from Lehigh's own net price calculator for 2027&ndash;28, run for a Pennsylvania household of five at one income in each bracket. They are estimates for that sample family, not averages.
     </div>
 </div>
 
@@ -536,8 +683,8 @@
     <h3>Are elite colleges cheaper than state schools for low-income families?</h3>
     <p>Yes, often dramatically so. For a Pocono Mountain family earning $30,000–$48,000, Princeton University has a <strong>$0 cost of attendance</strong> — their financial aid program covers tuition, room, board, fees, and travel with no expected family contribution. This compares to approximately $15,800 per year at East Stroudsburg University. High-endowment schools have the financial strength to meet 100% of demonstrated need, making their true cost far lower than their sticker price.</p>
 
-    <h3>What is a Crown Roots Pick college?</h3>
-    <p>A Crown Roots Pick is a college where The Gap falls below $12,000 per year for a given family income bracket. These are high-endowment schools within 4–5 hours of the Pocono Mountains, verified by Crown Roots Foundation to offer strong need-based aid packages for low- and middle-income Pennsylvania families.</p>
+    <h3>What is the Crown Top 10?</h3>
+    <p>The Crown Top 10 is our list of ten colleges that a typical Crown Roots student (a 3.2 to 3.7 GPA and about an 1100 SAT) can realistically get into, that a Pocono family earning under $75,000 can pay for, and that lead to careers our students ask about. We rank on what a sample family would owe the school each year after grants, using each school's own cost calculator, and on what graduates of specific programs earn. Very selective schools that can cost little or nothing are listed separately as Hidden Value Schools.</p>
 
     <h3>Where does this database get its data?</h3>
     <p>All figures come from federal and institutional sources: IPEDS (Integrated Postsecondary Education Data System) for tuition and financial aid; Tuition Tracker (hechinger.tuitiontracker.org) for net price by income bracket; NACUBO for endowment data; and manual institutional verification of no-loan policies.</p>
@@ -606,6 +753,23 @@ const schools = [
         acceptRate: '39%',
         netPrice: { under30: 14197, b30to48: 8312, b48to75: 12148, b75to110: 14046, over110: 58735 },
         tuitionTracker: 'https://www.tuitiontracker.org/school.html?unitid=213385'
+    },
+    {
+        // Lehigh Commitment: published IPEDS averages predate it, so these figures
+        // come from Lehigh's own Net Price Calculator (2027-28), run 2026-10-08 for a
+        // PA household of five with $2,000 in savings at incomes of $20,000, $39,000,
+        // $61,500, $92,500, and $130,000.
+        id: 'lehigh',
+        name: 'Lehigh University',
+        location: 'Bethlehem, PA',
+        driveMins: 45,
+        driveLabel: '~45 min',
+        endowment: '$2.2B',
+        acceptRate: '29%',
+        netPrice: { under30: 6400, b30to48: 6400, b48to75: 9900, b75to110: 13050, over110: 18950 },
+        tuitionTracker: 'https://npc.collegeboard.org/app/lehigh',
+        sourceLabel: 'Lehigh calculator',
+        note: 'Lehigh Commitment'
     },
     {
         id: 'haverford',
@@ -732,7 +896,7 @@ function renderTable(bracket) {
         html += `<tr>
             <td><input type="checkbox" class="compare-check" data-id="${s.id}" ${checked} ${disabled}></td>
             <td>
-                <div class="school-name">${s.name}${isCR ? '<span class="cr-badge">★ Crown Roots Pick</span>' : ''}</div>
+                <div class="school-name">${s.name}${isCR ? '<span class="cr-badge">★ Under $12K</span>' : ''}</div>${s.note ? `<div style="font-size:12px; color:var(--text-light);">${s.note}</div>` : ''}
             </td>
             <td style="font-size:13px;">${s.location}</td>
             <td style="font-size:13px;">${s.endowment}</td>
@@ -742,7 +906,7 @@ function renderTable(bracket) {
                 <span class="severity ${severityClass(gap)}"></span>
                 <span class="${gapColorClass(gap)}">${fmt(gap)}</span>
             </td>
-            <td><a href="${s.tuitionTracker}" target="_blank" rel="noopener" class="source-link">Tuition Tracker ↗</a></td>
+            <td><a href="${s.tuitionTracker}" target="_blank" rel="noopener" class="source-link">${s.sourceLabel || 'Tuition Tracker'} ↗</a></td>
         </tr>`;
     });
 
@@ -951,6 +1115,30 @@ document.querySelector('.nav-toggle').addEventListener('click', function () {
 // Init
 // ─────────────────────────────────────────────
 renderTable(selectedBracket);
+
+// ─────────────────────────────────────────────
+// Crown Top 10 / Hidden Value toggle
+// ─────────────────────────────────────────────
+(function () {
+    var tabs = { top10: document.getElementById('tabTop10'), hidden: document.getElementById('tabHidden') };
+    var panels = { top10: document.getElementById('top10Panel'), hidden: document.getElementById('hiddenValueSection') };
+    var explain = document.getElementById('picksExplain');
+    var text = {
+        top10: 'Ten schools most Crown Roots students can get into and afford.',
+        hidden: 'For students with top grades and test scores: very selective schools that can cost a low-income family little or nothing.'
+    };
+    function show(which) {
+        Object.keys(tabs).forEach(function (k) {
+            tabs[k].setAttribute('aria-selected', String(k === which));
+            panels[k].hidden = k !== which;
+        });
+        explain.textContent = text[which];
+        document.getElementById('compareBar').style.display = which === 'hidden' ? '' : 'none';
+    }
+    tabs.top10.addEventListener('click', function () { show('top10'); });
+    tabs.hidden.addEventListener('click', function () { show('hidden'); });
+    show(location.hash === '#hidden-value' || location.hash === '#hiddenValueSection' ? 'hidden' : 'top10');
+})();
 </script>
 
 </body>

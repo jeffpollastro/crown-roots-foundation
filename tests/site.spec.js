@@ -75,6 +75,19 @@ test('tools.html Out/Come door leads to outcome.html', async ({ page }) => {
   await expect(page.locator('#outcome a[href="outcome.html"]')).toBeVisible();
 });
 
+test('college-database.html opens on Crown Top 10 and toggles to Hidden Value Schools', async ({ page }) => {
+  await page.goto('/college-database.html');
+  await expect(page.locator('#top10Table tbody tr')).toHaveCount(10);
+  await expect(page.locator('#top10Panel')).toBeVisible();
+  await expect(page.locator('#hiddenValueSection')).toBeHidden();
+  await page.locator('#tabHidden').click();
+  await expect(page.locator('#hiddenValueSection')).toBeVisible();
+  await expect(page.locator('#top10Panel')).toBeHidden();
+  await expect(page.locator('#hvTable')).toBeVisible();
+  await page.locator('#tabTop10').click();
+  await expect(page.locator('#top10Panel')).toBeVisible();
+});
+
 test('Nav does not list Scholarships', async ({ page }) => {
   await page.goto('/index.html');
   await expect(page.locator('.nav-links a[href="scholarships.html"]')).toHaveCount(0);
