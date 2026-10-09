@@ -149,3 +149,20 @@ test('All internal .html links return 200', async ({ page, request }) => {
     }
   }
 });
+
+test('Homepage shows three program tiles that link to each program', async ({ page }) => {
+  await page.goto('/index.html');
+  const tiles = page.locator('.program-tile');
+  await expect(tiles).toHaveCount(3);
+  await expect(tiles.nth(0)).toHaveAttribute('href', 'https://thecrownhub.org');
+  await expect(tiles.nth(1)).toHaveAttribute('href', 'about.html#united');
+  await expect(tiles.nth(2)).toHaveAttribute('href', 'tools.html');
+  for (const name of ['Crown Hub', 'UNITED', 'I/O']) {
+    await expect(page.locator('.program-tile h3', { hasText: name })).toBeVisible();
+  }
+});
+
+test('about.html has a United section the homepage tile can land on', async ({ page }) => {
+  await page.goto('/about.html#united');
+  await expect(page.locator('#united h3')).toHaveText('United');
+});

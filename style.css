@@ -1279,6 +1279,98 @@ img, svg { max-width: 100%; height: auto; }
 .program-cards .card p { font-size: 13px; color: var(--text-light); margin: 0; }
 .program-cards .card-icon { width: 26px; height: 26px; margin-bottom: 8px; }
 
+/* Program tiles (homepage: Crown Hub / UNITED / I/O) */
+.program-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.program-tile {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  color: inherit;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.program-tile:hover,
+.program-tile:focus-visible {
+  text-decoration: none;
+  transform: translateY(-3px);
+  border-color: var(--gold);
+  box-shadow: 0 8px 22px rgba(48,34,16,0.14);
+}
+
+.program-tile-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 170px;
+  padding: 20px;
+  background: #fbfaf8;
+  border-bottom: 1px solid var(--border);
+}
+
+.program-tile-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.program-tile-logo-io { height: 110px; }
+.program-tile-logo-fill { padding: 0; }
+.program-tile-logo-fill img { width: 100%; height: 100%; object-fit: cover; object-position: right center; }
+
+#united { scroll-margin-top: 90px; }
+
+.program-tile-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px 22px 22px;
+}
+
+.program-tile-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.program-tile h3 {
+  font-size: 22px;
+  color: var(--dark-brown);
+  margin-bottom: 8px;
+}
+
+.program-tile p {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.program-tile-cta {
+  margin-top: auto;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+@media (max-width: 860px) {
+  .program-tiles { grid-template-columns: 1fr; }
+  .program-tile-logo { height: 150px; }
+  .program-tile-logo-fill { height: auto; aspect-ratio: 23 / 12; }
+}
+
 @media (max-width: 768px) {
   .carousel-slide { flex-basis: 78%; }
   .carousel-arrow { width: 36px; height: 36px; }
