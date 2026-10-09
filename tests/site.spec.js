@@ -166,3 +166,18 @@ test('about.html has a United section the homepage tile can land on', async ({ p
   await page.goto('/about.html#united');
   await expect(page.locator('#united h3')).toHaveText('United');
 });
+
+test('Hidden Value table uses calculator figures and handles a missing price', async ({ page }) => {
+  await page.goto('/college-database.html#hidden-value');
+  const select = page.locator('#bracketSelect');
+  await select.selectOption('over110');
+  const princeton = page.locator('#hvTable tr', { hasText: 'Princeton University' });
+  await expect(princeton.locator('.gap-cell')).toContainText('$0');
+  await expect(page.locator('#hvTable .baseline-row .gap-cell')).toContainText('$24,298');
+  await select.selectOption('b75to110');
+  const rows = page.locator('#hvTable tbody tr');
+  await expect(rows).toHaveCount(11);
+  await expect(rows.nth(9)).toContainText('Univ. of Pennsylvania');
+  await expect(rows.nth(9).locator('.gap-cell')).toContainText('Not available');
+  await expect(page.locator('#hvTable')).not.toContainText('NaN');
+});
