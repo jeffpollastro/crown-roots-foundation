@@ -19,9 +19,9 @@
       "name": "Crown Roots Foundation",
       "url": "https://crownroots.org",
       "logo": "https://crownroots.org/assets/Crown Roots Foundation Favicon.png",
-      "description": "Crown Roots Foundation expands opportunity for Pocono Mountain youth through basketball, mentorship, and college access programs, removing financial barriers to information, participation, and higher education.",
+      "description": "Crown Roots Foundation expands opportunity for Pocono Mountain youth through academics, college access, and campus visits, removing financial barriers to information, participation, and higher education.",
       "areaServed": { "@type": "Place", "name": "Pocono Mountain, Monroe County, Pennsylvania" },
-      "knowsAbout": ["college access", "no-loan financial aid", "FAFSA", "PHEAA State Grant", "youth mentorship", "basketball", "first-generation college students", "Pennsylvania scholarships", "opportunity gap", "higher education navigation"],
+      "knowsAbout": ["college access", "no-loan financial aid", "FAFSA", "PHEAA State Grant", "youth mentorship", "campus visits", "first-generation college students", "Pennsylvania scholarships", "opportunity gap", "higher education navigation"],
       "contactPoint": { "@type": "ContactPoint", "contactType": "General Inquiry", "url": "https://crownroots.org/contact.html" },
       "taxID": "41-5008417",
       "nonprofitStatus": "501(c)(3) Public Charity",
@@ -493,7 +493,7 @@
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     HIDDEN VALUE SCHOOLS — Live Database Section
+     HIDDEN VALUE SCHOOLS: Live Database Section
 ════════════════════════════════════════════════════════ -->
 <div class="section" id="crown-top-10" style="padding-bottom: 0;">
     <h2>Our School Picks</h2>
@@ -696,7 +696,7 @@
 </div>
 
 <footer class="site-footer">
-    <p>&copy; 2026 Crown Roots Foundation. All rights reserved. &mdash; 501(c)(3) Nonprofit &mdash; EIN: 41-5008417</p>
+    <p>&copy; 2026 Crown Roots Foundation. All rights reserved. &middot; 501(c)(3) Nonprofit &middot; EIN: 41-5008417</p>
 </footer>
 
 <script>
@@ -831,7 +831,7 @@ const schools = [
     }
 ];
 
-// ESU baseline — always pinned at bottom, never checked
+// ESU baseline: always pinned at bottom, never checked
 const esu = {
     id: 'esu',
     name: 'East Stroudsburg Univ.',
@@ -917,7 +917,7 @@ function renderTable(bracket) {
         </tr>`;
     });
 
-    // ESU baseline row — always last
+    // ESU baseline row: always last
     const esuGap = esu.netPrice[bracket];
     html += `<tr class="baseline-row">
         <td></td>
@@ -1088,7 +1088,7 @@ function renderComparePanel() {
 }
 
 // ─────────────────────────────────────────────
-// Compare Now Button — scroll to panel
+// Compare Now Button: scroll to panel
 // ─────────────────────────────────────────────
 document.getElementById('btnCompareNow').addEventListener('click', () => {
     const panel = document.getElementById('comparePanel');

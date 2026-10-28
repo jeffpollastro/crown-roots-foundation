@@ -16,7 +16,7 @@ const ALL_PAGES = [
 // ─── Donate button ─────────────────────────────────────────────
 
 for (const url of ALL_PAGES) {
-  test(`Donate button visible in nav — ${url}`, async ({ page }) => {
+  test(`Donate button visible in nav: ${url}`, async ({ page }) => {
     await page.goto(url);
     const donate = page.locator('.btn-nav-donate');
     await expect(donate).toBeVisible();
@@ -105,11 +105,11 @@ test('contact.html has exactly 3 partner tier cards', async ({ page }) => {
   await expect(page.locator('.partner-tier')).toHaveCount(3);
 });
 
-test('contact.html Season Sponsor tier is featured', async ({ page }) => {
+test('contact.html Campus Visit Sponsor tier is featured', async ({ page }) => {
   await page.goto('/contact.html');
   const featured = page.locator('.partner-tier.featured');
   await expect(featured).toBeVisible();
-  await expect(featured).toContainText('Season Sponsor');
+  await expect(featured).toContainText('Campus Visit Sponsor');
 });
 
 test('contact.html inquiry form has partner-type select', async ({ page }) => {
@@ -154,9 +154,9 @@ test('Homepage shows three program tiles that link to each program', async ({ pa
   await page.goto('/index.html');
   const tiles = page.locator('.program-tile');
   await expect(tiles).toHaveCount(3);
-  await expect(tiles.nth(0)).toHaveAttribute('href', 'https://thecrownhub.org');
-  await expect(tiles.nth(1)).toHaveAttribute('href', 'about.html#united');
-  await expect(tiles.nth(2)).toHaveAttribute('href', 'tools.html');
+  await expect(tiles.nth(0)).toHaveAttribute('href', 'about.html#united');
+  await expect(tiles.nth(1)).toHaveAttribute('href', 'tools.html');
+  await expect(tiles.nth(2)).toHaveAttribute('href', 'https://thecrownhub.org');
   for (const name of ['Crown Hub', 'UNITED', 'I/O']) {
     await expect(page.locator('.program-tile h3', { hasText: name })).toBeVisible();
   }

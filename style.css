@@ -1,4 +1,4 @@
-/* Crown Roots Foundation — Global Styles */
+/* Crown Roots Foundation: Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 :root {
@@ -663,7 +663,7 @@ img, svg { max-width: 100%; height: auto; }
   text-decoration: none;
 }
 
-/* Video Library — Facade Cards */
+/* Video Library: Facade Cards */
 .video-card {
   background: var(--white);
   border-radius: 10px;
@@ -872,7 +872,7 @@ img, svg { max-width: 100%; height: auto; }
   gap: 10px;
 }
 
-/* Donate button — always visible in nav */
+/* Donate button: always visible in nav */
 .btn-nav-donate {
   background: var(--gold);
   color: var(--dark-brown) !important;
