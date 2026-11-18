@@ -1482,3 +1482,240 @@ img, svg { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .hero.hero-ghost .hero-ghost-head { animation: none; }
 }
+
+/* Key statements (mission, vision lines, tagline): display type over the echo headers */
+.ghost-section p.statement {
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-size: clamp(20px, 2.4vw, 26px);
+  line-height: 1.35;
+  color: var(--dark-brown);
+  margin-bottom: 18px;
+}
+
+/* Intro paragraphs under echo headers run the full column like the sections around them */
+.ghost-section .intro-text { max-width: none; }
+
+/* ── Campus baseball cards ─────────────────────────────── */
+.campus-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(172px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.campus-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 6px solid var(--white);
+  outline: 2px solid var(--dark-brown);
+  outline-offset: -8px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(48, 34, 16, 0.14);
+  padding: 14px 12px 12px;
+  color: var(--text);
+  text-decoration: none;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.campus-card:hover,
+.campus-card:focus-visible {
+  text-decoration: none;
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 0 14px 28px rgba(48, 34, 16, 0.22);
+}
+/* Glossy sweep on hover, like a fresh card out of the pack */
+.campus-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.55) 50%, transparent 65%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+.campus-card:hover::after { transform: translateX(120%); }
+
+.campus-card.is-visited { outline-color: var(--gold); }
+
+.cc-rank {
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-size: 15px;
+  color: var(--gold);
+  margin: 2px 0 0 4px;
+}
+
+.cc-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 86px;
+  margin: 6px 4px 10px;
+}
+.cc-logo img { max-width: 100%; max-height: 72px; object-fit: contain; }
+
+.cc-name {
+  font-family: 'Righteous', system-ui, sans-serif;
+  background: var(--dark-brown);
+  color: var(--gold);
+  font-size: 15px;
+  line-height: 1.2;
+  text-align: center;
+  padding: 8px 6px;
+  margin: 0 -2px;
+  border-radius: 4px;
+}
+.cc-name small { color: #d8c9a8; font-size: 11px; letter-spacing: 0.06em; }
+
+.cc-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-top: 10px;
+  text-align: center;
+}
+.cc-stats > span {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.cc-stats b {
+  display: block;
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--dark-brown);
+}
+
+.cc-tag {
+  font-size: 12.5px;
+  line-height: 1.35;
+  color: var(--text-light);
+  text-align: center;
+  margin: 10px 2px 8px;
+  flex: 1;
+}
+
+.cc-foot {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+.cc-foot-visited { color: var(--gold); font-weight: 700; }
+
+/* "Visited" corner ribbon */
+.cc-ribbon {
+  position: absolute;
+  top: 14px;
+  right: -34px;
+  width: 120px;
+  transform: rotate(45deg);
+  background: var(--gold);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 3px 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.campus-cards-note {
+  font-size: 12px !important;
+  color: var(--text-muted) !important;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .campus-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .cc-name { font-size: 13px; }
+  .cc-stats b { font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .campus-card, .campus-card::after { transition: none; }
+  .campus-card:hover, .campus-card:focus-visible { transform: none; }
+}
+
+/* ── School page (campus/*.html) ───────────────────────── */
+.school-hero-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+.school-hero-logo img { width: 240px; max-width: 100%; height: auto; max-height: 80px; }
+
+.school-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 8px 0 0;
+}
+.school-stat {
+  background: var(--white);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.school-stat b {
+  display: block;
+  font-family: 'Righteous', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  color: var(--dark-brown);
+}
+.school-stat span { font-size: 13px; color: var(--text-light); }
+
+.back-link { display: inline-block; margin-bottom: 18px; font-weight: 600; font-size: 14px; }
+
+/* Home page: Top 10 cards as a swipeable row, with the same arrows and dots as the photo carousel */
+.cards-row-wrap {
+  display: flex;
+  align-items: center;
+  max-width: 1100px;
+  margin: 8px auto 0;
+}
+.campus-cards.cards-row {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 12px 26px 20px;
+  scroll-padding-inline: 26px;
+  margin-top: 0;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 22px, #000 calc(100% - 22px), transparent 100%);
+}
+.campus-cards.cards-row::-webkit-scrollbar { display: none; }
+.cards-row .campus-card {
+  flex: 0 0 182px;
+  scroll-snap-align: start;
+}
+.cards-row-dots { margin: 4px 0 18px; }
+.cards-row-more { margin-top: 0; font-weight: 600; text-align: center; }
+@media (max-width: 768px) {
+  .cards-row .campus-card { flex-basis: 156px; }
+}
+
+/* Full-width beige band for sections that keep their own inner width */
+.band-alt { background: var(--section-bg); }

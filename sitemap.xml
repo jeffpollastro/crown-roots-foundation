@@ -13,6 +13,12 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://crownroots.org/campus/ysu.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://crownroots.org/opportunity-gap.html</loc>
     <lastmod>2026-06-20</lastmod>
     <priority>0.8</priority>
