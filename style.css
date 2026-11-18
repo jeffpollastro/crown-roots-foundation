@@ -1382,3 +1382,103 @@ img, svg { max-width: 100%; height: auto; }
   .program-panel { grid-template-columns: 1fr; text-align: center; padding: 22px; }
   .program-panel-visual img { max-width: 220px; margin: 0 auto; }
 }
+
+/* Ghost headers: oversized, translucent section titles that the body text overlaps */
+.ghost-section {
+  position: relative;
+  overflow-x: clip;
+}
+
+/* Header size is measured against its own column */
+.ghost-section:not(.section-alt),
+.ghost-section .section-inner {
+  container-type: inline-size;
+}
+
+.ghost-section .ghost-head {
+  position: relative;
+  z-index: 0;
+  display: block;
+  /* Scales with word length so long words still fit the column */
+  font-size: min(200px, calc(128cqi / var(--ghost-len, 7)));
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(48, 34, 16, 0.045);
+  margin: 0 0 -0.42em -0.04em;
+  pointer-events: none;
+  user-select: none;
+}
+
+.ghost-section .ghost-head.ghost-right {
+  text-align: right;
+  margin-right: -0.04em;
+}
+
+/* Header settles in: letters tighten as it scrolls into view */
+.ghost-section .ghost-head.reveal {
+  transform: translateY(18px);
+  letter-spacing: 0.04em;
+  transition: opacity 0.9s ease, transform 0.9s ease, letter-spacing 1.2s ease;
+}
+.ghost-section .ghost-head.reveal.visible {
+  transform: none;
+  letter-spacing: -0.02em;
+}
+
+.ghost-section > *:not(.ghost-head),
+.ghost-section .section-inner > *:not(.ghost-head) {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ghost-section .ghost-head.reveal,
+  .ghost-section .ghost-head.reveal.visible {
+    transform: none;
+    letter-spacing: -0.02em;
+    transition: none;
+  }
+}
+
+/* A header with nothing under it in its section keeps its full height */
+.ghost-section .ghost-head:last-child { margin-bottom: 0; }
+
+/* Page title echo: oversized translucent ochre title behind the hero text */
+.hero.hero-ghost {
+  position: relative;
+  overflow-x: clip;
+  container-type: inline-size;
+}
+
+.hero.hero-ghost .hero-ghost-head {
+  position: relative;
+  z-index: 0;
+  font-size: min(220px, calc(120cqi / var(--ghost-len, 7)));
+  line-height: 0.85;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  color: rgba(212, 153, 13, 0.2);
+  margin: 0 0 -0.42em;
+  pointer-events: none;
+  user-select: none;
+  animation: heroGhostIn 1.2s ease both;
+}
+
+.hero.hero-ghost > *:not(.hero-ghost-head) {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heroGhostIn {
+  from { opacity: 0; letter-spacing: 0.06em; transform: translateY(14px); }
+  to   { opacity: 1; letter-spacing: -0.02em; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero.hero-ghost .hero-ghost-head { animation: none; }
+}
